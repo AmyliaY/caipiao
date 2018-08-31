@@ -1,0 +1,11 @@
+*{
+	margin: 0px;padding: 0px;
+	}
+#table{
+	margin:auto;
+	width:33%;
+}
+.input-text
+{
+	margin:15px;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="caipiao-web"
+  id="myeclipse.1526204549759"
+  context-root="/caipiao-web"
+  j2ee-spec="5.0"
+  archive="caipiao-web.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,20 @@
+#MyEclipse Hibernate Properties
+#Tue Jul 31 21:11:41 GMT+08:00 2018
+genBasicCompId=true
+sessionFactoryName=
+profile=
+daoSFId=sessionFactory
+jndiPath=
+detectM2M=true
+reStrategyClass=
+detectO2O=true
+springDaoFile=src/applicationContext.xml
+useJavaTypes=true
+keyGenerator=native
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=/caipiao-web/hibernate.reveng.xml
+configFile=/caipiao-web/src/hibernate.cfg.xml
+createConfigFile=true
