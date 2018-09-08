@@ -16,8 +16,6 @@ import weixin.popular.bean.paymch.UnifiedorderResult;
 import weixin.popular.util.MapUtil;
 import weixin.popular.util.SignatureUtil;
 
-import com.util.MD5Util;
-
 
 @Service
 public class AppRechargePayService {
@@ -153,7 +151,6 @@ public class AppRechargePayService {
 		String noncestr=unifiedorderResult.getNonce_str();
 		
 		appid=unifiedorderResult.getAppid();
-		
 		
 		//还需要重新生成 sign
 		String s="appid="+appid+"&noncestr="+noncestr+"&package=Sign=WXPay"+"&partnerid="+

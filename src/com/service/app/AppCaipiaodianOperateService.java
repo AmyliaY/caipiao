@@ -184,9 +184,4 @@ public class AppCaipiaodianOperateService {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-	
-	
 }

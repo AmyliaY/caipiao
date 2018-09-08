@@ -1,15 +1,8 @@
 package com.service.app;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,21 +23,9 @@ import com.dao.ShiyixuanwuDdxqDAO;
 import com.dao.SoccerGameDAO;
 import com.dao.UsersDAO;
 import com.dao.ZucaishengfuDdxqDAO;
-import com.pojo.Caipiaobiao;
-import com.pojo.CaipiaobiaoDesc;
 import com.pojo.Caipiaodian;
-import com.pojo.DaletouDdxq;
 import com.pojo.Dingdan;
 import com.pojo.Dingdanxiangqing;
-import com.pojo.Fucai3dDdxq;
-import com.pojo.PailiesanDdxq;
-import com.pojo.PailiewuDdxq;
-import com.pojo.QilecaiDdxq;
-import com.pojo.QixingcaiDdxq;
-import com.pojo.ShiyixuanwuDdxq;
-import com.pojo.SoccerGame;
-import com.pojo.Users;
-import com.pojo.ZucaishengfuDdxq;
 import com.util.JsonFilter;
 
 import net.sf.json.JSONObject;
@@ -88,7 +69,6 @@ public class AppCaipiaodianYewuService {
 	private SoccerGameDAO soccerGameDAO;
 	@Autowired
 	private ZucaishengfuDdxqDAO zucaishengfuDdxqDAO;
-	
 	
 	public String qiangdan(Caipiaodian caipiaodian, String page, String size) {
 		//对订单做分页
@@ -165,9 +145,4 @@ public class AppCaipiaodianYewuService {
 		String json = jsonObject.toString();
 		return json;
 	}
-
-	
-	
-
-	
 }

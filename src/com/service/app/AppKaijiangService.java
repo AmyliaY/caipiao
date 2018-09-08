@@ -234,6 +234,4 @@ public class AppKaijiangService {
 		String json = jsonObject.toString();
 		return json;
 	}
-	
-	
 }

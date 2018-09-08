@@ -299,7 +299,4 @@ public class AppPersonCenterService {
 			usersDAO.merge(users);
 		}
 	}
-
-	
-	
 }

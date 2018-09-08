@@ -39,7 +39,6 @@ public class AppChongzhiTixianService {
 	private UsersDAO usersDAO;
 	@Autowired
 	private CaipiaodianDAO caipiaodianDAO;
-	
 
 	/**
 	 * 新增用户充值订单记录
@@ -131,8 +130,4 @@ public class AppChongzhiTixianService {
 		}
 		return false;
 	}
-	
-	
-	
-	
 }
