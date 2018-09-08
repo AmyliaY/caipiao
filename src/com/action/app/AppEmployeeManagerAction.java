@@ -66,7 +66,6 @@ public class AppEmployeeManagerAction {
 		return json;//json=yes
 	}
 	
-	
 	/**
 	 * 编辑员工
 	 */
@@ -80,7 +79,4 @@ public class AppEmployeeManagerAction {
 		String json = employeeManagerService.editEmployee(empId, tel, pwd2);
 		return json;//json=yes
 	}
-	
-	
-	
 }

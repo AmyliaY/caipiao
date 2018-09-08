@@ -1,9 +1,7 @@
 package com.service.app;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,19 +15,10 @@ import org.springframework.stereotype.Service;
 import com.dao.CaipiaobiaoDAO;
 import com.dao.CaipiaobiaoDescDAO;
 import com.dao.CaipiaodianDAO;
-import com.dao.DaletouDdxqDAO;
 import com.dao.DingdanDAO;
 import com.dao.DingdanxiangqingDAO;
-import com.dao.Fucai3dDdxqDAO;
 import com.dao.HqlDAO;
-import com.dao.PailiesanDdxqDAO;
-import com.dao.PailiewuDdxqDAO;
-import com.dao.QilecaiDdxqDAO;
-import com.dao.QixingcaiDdxqDAO;
-import com.dao.ShiyixuanwuDdxqDAO;
-import com.dao.SoccerGameDAO;
 import com.dao.UsersDAO;
-import com.dao.ZucaishengfuDdxqDAO;
 import com.pojo.Caipiaobiao;
 import com.pojo.CaipiaobiaoDesc;
 import com.pojo.Caipiaodian;
@@ -61,20 +50,6 @@ public class AppBuyCaipiaoService {
 	@Autowired
 	private DingdanxiangqingDAO dingdanxiangqingDAO;
 	@Autowired
-	private Fucai3dDdxqDAO fucai3dDdxqDAO;
-	@Autowired
-	private QilecaiDdxqDAO qilecaiDdxqDAO;
-	@Autowired
-	private DaletouDdxqDAO daletouDdxqDAO;
-	@Autowired
-	private QixingcaiDdxqDAO qixingcaiDdxqDAO;
-	@Autowired
-	private PailiesanDdxqDAO pailiesanDdxqDAO;
-	@Autowired
-	private PailiewuDdxqDAO pailiewuDdxqDAO;
-	@Autowired
-	private ShiyixuanwuDdxqDAO shiyixuanwuDdxqDAO;
-	@Autowired
 	private UsersDAO usersDAO;
 	@Autowired
 	private CaipiaobiaoDAO caipiaobiaoDAO;
@@ -84,10 +59,6 @@ public class AppBuyCaipiaoService {
 	private CaipiaobiaoDescDAO caipiaobiaoDescDAO;
 	@Autowired
 	private CaipiaodianDAO caipiaodianDAO;
-	@Autowired
-	private SoccerGameDAO soccerGameDAO;
-	@Autowired
-	private ZucaishengfuDdxqDAO zucaishengfuDdxqDAO;
 
 	/**
 	 * 创建订单
@@ -164,7 +135,6 @@ public class AppBuyCaipiaoService {
 		dingdanDAO.save(dingdan);
 		return null;
 	}
-	
 	
 	/**
 	 * 根据当前用户所在的区县，列出该地区的彩票店，分页

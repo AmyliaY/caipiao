@@ -14,18 +14,13 @@ import com.dao.CaipiaodianDAO;
 import com.dao.CaipiaodianshenqingDAO;
 import com.dao.CpztixianDAO;
 import com.dao.HqlDAO;
-import com.pojo.Appversion;
 import com.pojo.Caipiandianyuangong;
 import com.pojo.Caipiaodian;
 import com.pojo.Caipiaodianshenqing;
-import com.pojo.Collections;
 import com.pojo.Cpzchongzhijilu;
 import com.pojo.Cpztixian;
 import com.pojo.Dingdan;
 import com.pojo.Dingdanxiangqing;
-import com.pojo.Users;
-import com.pojo.Userschongzhijilu;
-import com.pojo.Userstixian;
 import com.util.JsonFilter;
 
 import net.sf.json.JSONObject;
@@ -82,7 +77,6 @@ public class AppCaipiaodianCenterService {
 				return arrayList;
 			}
 		}
-		
 		return null;
 	}
 	
@@ -201,9 +195,6 @@ public class AppCaipiaodianCenterService {
 		caipiaodianshenqing.setZhuangtai((Integer)0);
 		caipiaodianshenqingDAO.merge(caipiaodianshenqing);
 	}
-
-
-	
 	
 	
 ////////////////////////////////////////////彩票店的信息记录////////////////////////////////////////////////////////////////
@@ -347,8 +338,4 @@ public class AppCaipiaodianCenterService {
 			caipiaodianDAO.merge(caipiaodian);
 		}
 	}
-
-	
-	
-	
 }

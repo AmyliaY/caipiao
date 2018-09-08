@@ -44,22 +44,17 @@ public class AppRechargePayAction {
 	@ResponseBody
 	@RequestMapping(params = "p=userWxPay")
 	public String userWxPay() {
-		
-		
 		String orderId = UUID.randomUUID().toString().replaceAll("-", "");
 		String notifyUrl = URLManager.getServerURL(request)+"/wexinUserChongzhiPay.do";
 		String money = request.getParameter("total");
 		String title = "积分充值";
-
 		Users users = (Users) request.getSession().getAttribute(
 				"users");
 		if (users != null) {
 			String json = rechargePayService.payByWxpay(notifyUrl, request,
 					orderId);
-
 			chongzhiTixianService.addUserChongzhi(users, Double
 					.parseDouble(money), orderId, 2);
-
 			return json;
 		}
 		return "false";
@@ -78,16 +73,13 @@ public class AppRechargePayAction {
 		String notifyUrl = URLManager.getServerURL(request)+"/aliPayByUserChonzhiNotify.do";//客户付款后,支付宝回调的页面
 		String money = request.getParameter("total");
 		String title = "积分充值";
-
 		Users users = (Users) request.getSession().getAttribute(
 				"users");
 		if (users != null) {
 			String json = AliPayUtil.createPayString(orderId, money, notifyUrl,
 					title);
-
 			chongzhiTixianService.addUserChongzhi(users, Double
 					.parseDouble(money), orderId, 1);
-
 			return json;
 		}
 		return "false";
@@ -106,16 +98,13 @@ public class AppRechargePayAction {
 		String notifyUrl = URLManager.getServerURL(request)+"/wexinCpdChongzhiPay.do";
 		String money = request.getParameter("total");
 		String title = "积分充值";
-
 		Caipiaodian caipiaodian = (Caipiaodian) request.getSession().getAttribute(
 				"caipiaodian");
 		if (caipiaodian != null) {
 			String json = rechargePayService.payByWxpay(notifyUrl, request,
 					orderId);
-
 			chongzhiTixianService.addCpdChongzhi(caipiaodian, Double
 					.parseDouble(money), orderId, 2);
-
 			return json;
 		}
 		return "false";
@@ -134,32 +123,26 @@ public class AppRechargePayAction {
 		String notifyUrl = URLManager.getServerURL(request)+"/aliPayByCpdChonzhiNotify.do";//客户付款后,支付宝调用的页面
 		String money = request.getParameter("total");
 		String title = "积分充值";
-
 		Caipiaodian caipiaodian = (Caipiaodian) request.getSession().getAttribute(
 				"caipiaodian");
 		if (caipiaodian != null) {
 			String json = AliPayUtil.createPayString(orderId, money, notifyUrl,
 					title);
-
 			chongzhiTixianService.addCpdChongzhi(caipiaodian, Double
 					.parseDouble(money), orderId, 1);
-
 			return json;
 		}
 		return "false";
 	}
-	
 
 	// 创建订单号
 	@ResponseBody
 	@RequestMapping(params = "p=getOrderid")
 	public String getOrderid() {
-
 		String orderId = UUID.randomUUID().toString().replace("-", "");
-
 		return orderId;
 	}
-
+	
 	@ResponseBody
 	@RequestMapping(params = "p=chongzhiStatus")
 	public String chongzhiStatus() {

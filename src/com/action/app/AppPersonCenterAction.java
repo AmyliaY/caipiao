@@ -218,6 +218,4 @@ public class AppPersonCenterAction {
 		personCenterService.removeCollectById(users.getId(), cpdId);
 		return "yes";
 	}
-	
-	
 }

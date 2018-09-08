@@ -148,6 +148,4 @@ public class AppKaijiangAction {
 		String json = kaijiangService.getShiyixuanwuKjgg(10+"", 1+"");
 		return json;
 	}
-	
-	
 }
