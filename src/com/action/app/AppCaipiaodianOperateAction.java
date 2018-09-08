@@ -15,7 +15,6 @@ import com.service.app.AppCaipiaodianOperateService;
 * @author 全恒
 * 彩票店业务模块
 */
-
 @Controller
 @RequestMapping("/cpdOperation.do")
 public class AppCaipiaodianOperateAction {
@@ -24,7 +23,6 @@ public class AppCaipiaodianOperateAction {
 	private AppCaipiaodianOperateService caipiaodianOperateService;
 	@Autowired
 	private HttpServletRequest request;
-	
 	
 	/**
 	 * 分页查询订单记录/订单详情记录（所有）
@@ -101,7 +99,6 @@ public class AppCaipiaodianOperateAction {
 		return "yes";
 	}
 	
-	
 	/**
 	 * 根据订单ID和抢单的店铺
 	 * 执行抢单操作
@@ -125,10 +122,4 @@ public class AppCaipiaodianOperateAction {
 		String num = caipiaodianOperateService.kejieOrderNum(caipiaodian);
 		return num;
 	}
-	
-	
-	
-	
-	
-
 }
