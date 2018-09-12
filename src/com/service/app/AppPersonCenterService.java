@@ -131,7 +131,7 @@ public class AppPersonCenterService {
 	 */
 	public String getTixianjilu(Integer id, String size, String page) {
 		String hql = "from Userstixian where users.id=?";
-		List<Userstixian> txList = hqlDAO.findByHQL(hql, Integer.parseInt(size), Integer.parseInt(page), id);
+		List<Userstixian> txList = hqlDAO.pageQuery(hql, Integer.parseInt(size), Integer.parseInt(page), id);
 		Map map = new HashMap();
 		map.put("txList", txList);
 		JsonConfig config = new JsonConfig();

@@ -1,5 +1,6 @@
 <?php ?>
-[<?php
+[
+<?php
 $pId = "-1";
 if(array_key_exists( 'id',$_REQUEST)) {
 	$pId=$_REQUEST['id'];
@@ -21,4 +22,5 @@ for ($i=1; $i<=$max; $i++) {
 	}
 	
 }
-?>]
+?>
+]

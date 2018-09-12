@@ -11,10 +11,11 @@
 </head>
 <body>
 	<div id="top">
-        <a href="http://www.highcharts.com" title="Highcharts Home Page"
-           id="logo"><img alt="Highcharts Home Page"
-                          src="http://www.highcharts.com/templates/highsoft_colorful/images/logo.svg" border="0"></a>
-    </div>
+		<a href="http://www.highcharts.com" title="Highcharts Home Page"
+			id="logo"><img alt="Highcharts Home Page"
+			src="http://www.highcharts.com/templates/highsoft_colorful/images/logo.svg"
+			border="0"></a>
+	</div>
 	<div id="wrap">
 		<h3>Oops..,</h3>
 		<p>${message}</p>

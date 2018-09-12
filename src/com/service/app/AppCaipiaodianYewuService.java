@@ -3,10 +3,13 @@ package com.service.app;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+<<<<<<< .mine
 
+=======
+>>>>>>> .r2724
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
 import com.dao.CaipiaobiaoDAO;
 import com.dao.CaipiaobiaoDescDAO;
 import com.dao.CaipiaodianDAO;
@@ -27,7 +30,6 @@ import com.pojo.Caipiaodian;
 import com.pojo.Dingdan;
 import com.pojo.Dingdanxiangqing;
 import com.util.JsonFilter;
-
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
@@ -72,8 +74,16 @@ public class AppCaipiaodianYewuService {
 	
 	public String qiangdan(Caipiaodian caipiaodian, String page, String size) {
 		//对订单做分页
-		String hql = "from Dingdan where status=1";//订单
-		List<Dingdan> dingdanList = hqlDAO.pageQuery(hql, Integer.parseInt(size), Integer.parseInt(page));
+		String hql = "from Dingdan where status =1 and caipiaodianByCpzid1 =? or caipiaodianByCpzid2 =? or caipiaodianByCpzid3 =? or caipiaodianByCpzid4 =? or caipiaodianByCpzid5 =?";//订单
+		List<Dingdan> dingdanList = hqlDAO.pageQuery(hql, Integer.parseInt(size), Integer.parseInt(page),caipiaodian,caipiaodian,caipiaodian,caipiaodian,caipiaodian);
+		for (Dingdan dingdan : dingdanList) {
+			  long now = System.currentTimeMillis();
+			  long startTime = dingdan.getBegintime().getTime();
+			  long djs = 3600-(now-startTime)/1000;
+			  if (djs<0)
+				  djs = 0;
+			  dingdan.setDjs_miao(djs);
+		}
 		/*List<Dingdanxiangqing> ddxqList = new ArrayList<Dingdanxiangqing>();
 		for (Dingdan dingdan : dingdanList) {
 			String hql2 = "from Dingdanxiangqing where dingdan.id=?";//订单详情
@@ -95,12 +105,19 @@ public class AppCaipiaodianYewuService {
 	/**
 	 * 抢单(根据订单id)，将dingdan的caipiaodianByCpzid设置为当前彩票店，并修改订单状态。
 	 * @param caipiaodian 
+	 * @return 
 	 */
-	public void qiangdanByorderId(String orderid, Caipiaodian caipiaodian) {
+	//@Scheduled(fixedRate = 500)
+	public Dingdan qiangdanByorderId(String orderid, Caipiaodian caipiaodian) {
+		
 		Dingdan dingdan = dingdanDAO.findById(orderid);
+		if(dingdan.getStatus()==1)
+		{
 		dingdan.setCaipiaodianByCpzid(caipiaodian);
 		dingdan.setStatus(2);
-		dingdanDAO.merge(dingdan);
+		}
+		dingdan = dingdanDAO.merge(dingdan);
+		return dingdan;
 	}
 
 	/**
@@ -108,6 +125,7 @@ public class AppCaipiaodianYewuService {
 	 */
 	public String orderDescByorderId(String orderid) {
 		Dingdan dingdan = dingdanDAO.findById(orderid);
+		System.out.println(orderid);
 		String hql2 = "from Dingdanxiangqing where dingdan.id=?";//订单详情
 		List<Dingdanxiangqing> ddxqList = hqlDAO.findByHQL(hql2, dingdan.getId());
 		Map map = new HashMap();
