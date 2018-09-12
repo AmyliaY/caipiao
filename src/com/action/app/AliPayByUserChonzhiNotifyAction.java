@@ -20,14 +20,11 @@ import com.service.app.AppChongzhiTixianService;
  * @author lgh
  *
  */
-
 @Controller
 @RequestMapping("/aliPayByUserChonzhiNotify.do")
 public class AliPayByUserChonzhiNotifyAction {
-	
 	@Autowired
 	private AppChongzhiTixianService chongzhiTixianService;
-	
 	
 	@RequestMapping
 	@ResponseBody
@@ -96,12 +93,10 @@ public class AliPayByUserChonzhiNotifyAction {
 					System.out.println("签名失败");
 					return "sign fail";
 				}
-
 			}
 			return "response fail";
 		} else {
 			return "no notify message";
 		}
 	}
-
 }

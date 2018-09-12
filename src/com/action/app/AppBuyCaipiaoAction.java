@@ -20,7 +20,6 @@ import com.service.app.AppBuyCaipiaoService;
 /**
  *  @author 全恒
  */
-
 @Controller
 @RequestMapping("/buycaipiao.do")
 public class AppBuyCaipiaoAction {
@@ -29,7 +28,6 @@ public class AppBuyCaipiaoAction {
 	private HttpServletRequest request;
 	@Autowired 
 	private AppBuyCaipiaoService buyCaipiaoService;
-	
 	/**
 	 * 创建双色球订单
 	 * 订单状态，-1已取消订单，0已下单未付款，1已付款，2商家已接单
@@ -43,7 +41,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取双色球订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -81,7 +78,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取福彩3D订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -157,7 +153,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取大乐透订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -195,7 +190,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取七星彩订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -233,7 +227,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取排列三订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -271,7 +264,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取排列五订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -309,7 +301,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取十一选五订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -423,7 +414,6 @@ public class AppBuyCaipiaoAction {
 	@RequestMapping(params="p=findCaipiaobiao")
 	@ResponseBody
 	public String findfindCaipiaobiao(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		
 		String json = buyCaipiaoService.findCaipiaobiao();
 		System.out.println(json);
 		return json;
@@ -465,7 +455,6 @@ public class AppBuyCaipiaoAction {
 		String cpid = request.getParameter("cpid");
 		String zhushu = request.getParameter("zhushu");
 		String money = request.getParameter("money");
-		
 		//获取足彩订单详情参数
 		String orderDescJson = request.getParameter("orderDescJson");
 		//将json转换成dingdanxiangqing的list集合
@@ -489,13 +478,4 @@ public class AppBuyCaipiaoAction {
 		String json = buyCaipiaoService.confirmOrdersByZCSF(userid);
 		return json;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

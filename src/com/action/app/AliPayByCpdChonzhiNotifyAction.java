@@ -20,14 +20,12 @@ import com.service.app.AppChongzhiTixianService;
  * @author lgh
  *
  */
-
 @Controller
 @RequestMapping("/aliPayByCpdChonzhiNotify.do")
 public class AliPayByCpdChonzhiNotifyAction {
 	
 	@Autowired
 	private AppChongzhiTixianService chongzhiTixianService;
-	
 	
 	@RequestMapping
 	@ResponseBody
@@ -71,7 +69,6 @@ public class AliPayByCpdChonzhiNotifyAction {
 		String sign = request.getParameter("sign");
 		// 获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
 		
-		
 		if (notify_id != "" && notify_id != null) {// //判断接受的post通知中有无notify_id，如果有则是异步通知。
 			if (AlipayNotify.verifyResponse(notify_id).equals("true")) {//这里需要关闭电脑的防火墙
 				if (true)// 使用支付宝公钥验签 AlipayNotify.getSignVeryfyMD5(params, sign)
@@ -96,12 +93,10 @@ public class AliPayByCpdChonzhiNotifyAction {
 					System.out.println("签名失败");
 					return "sign fail";
 				}
-
 			}
 			return "response fail";
 		} else {
 			return "no notify message";
 		}
 	}
-
 }
