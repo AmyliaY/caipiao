@@ -19,7 +19,6 @@ import com.util.MD5Util;
 * 彩票店的员工管理
 * 
 */
-
 @Controller
 @RequestMapping("/employeeManager.do")
 public class AppEmployeeManagerAction {
@@ -67,7 +66,6 @@ public class AppEmployeeManagerAction {
 		return json;//json=yes
 	}
 	
-	
 	/**
 	 * 编辑员工
 	 */
@@ -81,7 +79,4 @@ public class AppEmployeeManagerAction {
 		String json = employeeManagerService.editEmployee(empId, tel, pwd2);
 		return json;//json=yes
 	}
-	
-	
-	
 }

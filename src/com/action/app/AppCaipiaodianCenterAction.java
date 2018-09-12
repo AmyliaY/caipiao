@@ -71,7 +71,6 @@ public class AppCaipiaodianCenterAction {
 		}
 	}
 	
-	
 	/**
 	 * 登录后显示营业额和订单数
 	 * 登陆的判断标准：既可用彩票店的手机号和密码登陆，也可用员工的手机号和密码登陆
@@ -88,13 +87,10 @@ public class AppCaipiaodianCenterAction {
 		String userpwd=request.getParameter("userpwd");
 		String userpwd2 = MD5Util.getMD5(MD5Util.getMD5(userpwd + "sunjob")
 				+ "sunjob");
-	
 		Caipiaodian caipiaodian = caipiaodianCenterService.applogin(username,userpwd2);
 		request.getSession().setAttribute("caipiaodian", caipiaodian);
-		
 		//flag，用来标记登陆的用户是商家还是店员，true指商家，false指店员
 		boolean flag = true;
-		
 		//如果用户能登陆，就查出该用户的营业额和订单数
 		if(caipiaodian!=null){
 			String json = caipiaodianCenterService.gotoOperationManager(caipiaodian, flag);
@@ -141,9 +137,6 @@ public class AppCaipiaodianCenterAction {
 	{
 		Caipiaodian caipiaodian = (Caipiaodian)request.getSession().getAttribute("caipiaodian");
 		Caipiandianyuangong caipiandianyuangong = (Caipiandianyuangong)request.getSession().getAttribute("caipiaodianEmployee");
-		/*if(caipiaodian == null){
-			return "nologin";//返回到登录界面
-		}*/
 		JsonConfig config=new JsonConfig();
 		config.setExcludes(new String[]{"password"});
 		config.setExcludes(new String[]{"mima"});
@@ -175,7 +168,6 @@ public class AppCaipiaodianCenterAction {
 		 return "success";
 	}
 	
-	
 	/**
 	 * 上传头像
 	 * @param response
@@ -187,7 +179,6 @@ public class AppCaipiaodianCenterAction {
 	public String uploadHeadimg(HttpServletResponse response) throws IOException
 	{
 		String path=request.getSession().getServletContext().getRealPath("/admin/images/tx");// 上传到指定目录
-		
 		Caipiaodian caipiaodian =  (Caipiaodian) request.getSession().getAttribute("caipiaodian");
 		int id =caipiaodian.getId();	//彩票店ID
 		String imgdata=request.getParameter("imgdata");	//图片
@@ -226,9 +217,6 @@ public class AppCaipiaodianCenterAction {
 			response.getWriter().print(true);
 		else
 			response.getWriter().print(false);
-//		System.out.println(newHeadimg);
-//		System.out.println("会员ID："+id);
-//		System.out.println("头衔："+imgdata);
 		return null;
 	}
 	
@@ -291,7 +279,6 @@ public class AppCaipiaodianCenterAction {
 		return "yes";
 	}
 	
-	
 /////////////////////////////////注册部分///////////////////////////////////////////////////////////////////	
 	/**
 	 * 彩票店注册，分为商户注册和商户验证两部分，
@@ -299,8 +286,6 @@ public class AppCaipiaodianCenterAction {
 	 * 完成商户验证后才将status设置为0
 	 * 彩票站状态，-1未进行商户验证，0未审核，1审核通过，2审核未通过
 	 */
-	
-	
 	
 	/**
 	 * 发送验证码，并验证手机号和用户名的唯一性
@@ -334,7 +319,6 @@ public class AppCaipiaodianCenterAction {
 		registerService.saveCode(code, mobile);
 		SmsUtil.send(mobile, content);
 	}
-	
 	
 	/**
 	 * 验证码超时验证
@@ -403,12 +387,6 @@ public class AppCaipiaodianCenterAction {
 		String yingyeImg =request.getParameter("yingyeImg");
 		Integer arId = Integer.parseInt(request.getParameter("arId"));//前端查询出省市区，根据结果返回对应的arId
 		String address = request.getParameter("address");
-//		String jingdu = request.getParameter("jingdu");
-//		String weidu = request.getParameter("weidu");
-//		String isTicai = request.getParameter("isTicai");
-//		String isFucai = request.getParameter("isFucai");
-		
-		//System.out.println(shenfenzheng);
 		caipiaodianCenterService.shopConfirmation(caipiaodianshenqing, faren,shenfenzheng,sfzFrontImg,sfzBackImg,yingyeID,yingyeName,yingyeImg,arId,address);
 		return "yes";
 	}
@@ -478,21 +456,4 @@ public class AppCaipiaodianCenterAction {
 		String json = caipiaodianCenterService.getZhongjiangjilu(caipiaodian.getId(), size, page);
 		return json;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

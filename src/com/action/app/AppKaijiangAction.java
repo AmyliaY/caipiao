@@ -16,7 +16,6 @@ import com.service.app.AppKaijiangService;
 @Controller
 @RequestMapping("/kaijiang.do")
 public class AppKaijiangAction {
-	
 	@Autowired
 	private HttpServletRequest request;
 	@Autowired
@@ -148,6 +147,4 @@ public class AppKaijiangAction {
 		String json = kaijiangService.getShiyixuanwuKjgg(10+"", 1+"");
 		return json;
 	}
-	
-	
 }
