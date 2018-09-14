@@ -17,9 +17,10 @@ import com.service.back.AdminloginService;
 @Controller
 @RequestMapping("/adminlogin.do")
 public class AdminloginAction {
+	
 	@Autowired
 	private AdminloginService loginService;
-
+	
 	@RequestMapping(params = "p=login")
 	@ResponseBody
 	public String login(HttpServletRequest request, HttpServletResponse response)
@@ -35,13 +36,10 @@ public class AdminloginAction {
 		Admin admin = loginService.login(username, password);
 		request.getSession().setAttribute("admin", admin);
 		if (admin != null) {
-			
 			return "true";
 		} else
-
 			return "false";
 	}
-	
 	
 	@RequestMapping(params="p=tomain")
 	public String tomain(HttpServletRequest request, HttpServletResponse response)
@@ -52,5 +50,4 @@ public class AdminloginAction {
 		}
 		return "/admin/admin.jsp";
 	}
-
 }

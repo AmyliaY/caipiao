@@ -37,7 +37,6 @@ public class AppRechargePayAction {
 	/**
 	 * 用户充值
 	 * 微信支付
-	 * 
 	 * @return
 	 */
 	@ResponseBody
@@ -63,7 +62,6 @@ public class AppRechargePayAction {
 	/**
 	 * 用户充值
 	 * 支付宝支付
-	 * 
 	 * @return
 	 */
 	@ResponseBody
@@ -89,7 +87,6 @@ public class AppRechargePayAction {
 	/**
 	 * 彩票店充值
 	 * 微信支付
-	 * 
 	 * @return
 	 */
 	@ResponseBody
@@ -115,7 +112,6 @@ public class AppRechargePayAction {
 	/**
 	 * 彩票店充值
 	 * 支付宝支付
-	 * 
 	 * @return
 	 */
 	@ResponseBody

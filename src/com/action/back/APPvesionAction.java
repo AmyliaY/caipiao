@@ -47,6 +47,7 @@ public class APPvesionAction {
 		request.setAttribute("appmap", appmap);
 		return "/admin/app_upgrade/applisting.jsp";
 	}
+	
 	/**
 	 * 上传app更新包
 	 * @param request
@@ -79,6 +80,7 @@ public class APPvesionAction {
 		pvesionService.AppfileUpload(appEdition,avtype,file);
 		return "上传成功";
 	}
+	
 	@RequestMapping(params="p=deleteapp")
 	public String deleteapp(HttpServletRequest request,HttpServletResponse response) throws IOException
 	{

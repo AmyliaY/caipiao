@@ -19,7 +19,6 @@ import com.service.app.AppCaipiaodianYewuService;
 /**
  *  @author 全恒
  */
-
 @Controller
 @RequestMapping("/caipiaodianyewu.do")
 public class AppCaipiaodianYewuAction {
@@ -81,5 +80,4 @@ public class AppCaipiaodianYewuAction {
 		String json = caipiaodianYewuService.getOrders(caipiaodian, page, size);
 		return json;
 	}
-	
 }

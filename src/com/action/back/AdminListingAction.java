@@ -17,10 +17,12 @@ import com.service.back.AdminListingService;
 @Controller
 @RequestMapping("/admin.do")
 public class AdminListingAction {
+	
 	@Autowired
 	private AdminListingService service;
 	@Autowired
 	private HttpServletRequest request;
+	
 	@RequestMapping(params="p=adminlisting")
 	public String adminlisting(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="5") int size)
 	{
@@ -39,6 +41,7 @@ public class AdminListingAction {
 		System.out.println(adminmap);
 		return "/admin/adminlisting/adminlisting.jsp";
 	}
+	
 	@RequestMapping(params="p=addAdmin")
 	@ResponseBody
 	public String addAdmin()
@@ -53,6 +56,7 @@ public class AdminListingAction {
 		service.addadmin(name,username,password);
 		return "success";
 	}
+	
 	@RequestMapping(params="p=editpwd")
 	@ResponseBody
 	public String editpwd()
@@ -66,10 +70,10 @@ public class AdminListingAction {
 		
 		return "true";
 	}
+	
 	@RequestMapping(params="p=tuichu")
 	public String tuichu() 
 	{
-		
 		request.getSession().removeAttribute("admin");
 		return "/admin/login.jsp";
 	}

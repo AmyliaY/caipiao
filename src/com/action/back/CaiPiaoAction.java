@@ -19,9 +19,6 @@ import com.util.StringUtil;
 
 /*作者：马日升
  * 功能：完成对彩票的操作
- * 
- * 
- * 
  */
 
 @Controller
@@ -61,6 +58,7 @@ public class CaiPiaoAction {
 		//redirect
 		return "/admin/caipiao/shuangseqiu.jsp";
 	}
+	
 	@RequestMapping(params = "p=getMaxQishu")
 	public String getMaxQishu(HttpServletRequest request,
 			HttpServletResponse response) {
@@ -72,6 +70,7 @@ public class CaiPiaoAction {
 		request.setAttribute("maxqishulist", maxqishulist);
 		return "/admin/caipiao/addqiuhao.jsp";
 	}
+	
 	@RequestMapping(params = "p=addQiuhao")
 	@ResponseBody
 	public String addQiuhao(HttpServletRequest request){
@@ -94,6 +93,7 @@ public class CaiPiaoAction {
 		caipiaoservice.updateKaiJiang(blue,oneRed,twoRed,threeRed,fourRed,fiveRed,sixRed,qishu);
 		return "success";
 	}
+	
 	@RequestMapping(params="p=delete")
 	@ResponseBody
 	public String delete()
@@ -106,6 +106,7 @@ public class CaiPiaoAction {
 		caipiaoservice.delete(kjId);
 		return "success";
 	}
+	
 	@RequestMapping(params = "p=getKaiJiangById")
 	public String getKaiJiangById(HttpServletRequest request){
 		Admin admin = (Admin) request.getSession().getAttribute("admin");
@@ -118,6 +119,7 @@ public class CaiPiaoAction {
 		System.out.println("laile");
 		return "/admin/caipiao/updatekaijiang.jsp";
 	}
+	
 	@RequestMapping(params = "p=updatekaijiang")
 	@ResponseBody
 	public String updateKaiJiang(HttpServletRequest request){
