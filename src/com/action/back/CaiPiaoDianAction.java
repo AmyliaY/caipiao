@@ -32,10 +32,12 @@ import net.sf.json.JsonConfig;
 @Controller
 @RequestMapping("/caipiaodian.do")
 public class CaiPiaoDianAction {
+	
 	@Autowired
 	private HttpServletRequest request;
 	@Autowired
 	private CaiPiaoDianShenHe service;
+	
 	@RequestMapping(params="p=shenhe")
 	public String shenhe(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="5") int size)
 	{
@@ -47,6 +49,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("caipiaodianshenhemap", map);
 		return "/admin/caipiaodian/caipiaodianshenhe.jsp";
 	}
+	
 	@RequestMapping(params="p=shenhetongyi")
 	public String shenhetongyi()
 	{
@@ -61,6 +64,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("page", page);
 		return "/caipiaodian.do?p=shenhe";
 	}
+	
 	@RequestMapping(params="p=shenhejvjue")
 	public String shenhejvjue()
 	{
@@ -76,6 +80,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("page", page);
 		return "/caipiaodian.do?p=shenhe";
 	}
+	
 	@RequestMapping(params="p=shenhejvjuelisting")
 	public String shenheupdatejvjue(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="5") int size)
 	{
@@ -87,6 +92,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("caipiaodianshenhemap", map);
 		return "/admin/caipiaodian/caipiaodianshenhejvjue.jsp";
 	}
+	
 	@RequestMapping(params="p=shenhejvjueliyou")
 	public String shenhejvjueliyou()
 	{
@@ -102,6 +108,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("page", page);
 		return "/admin/caipiaodian/jvjueliyou.jsp";
 	}
+	
 	@RequestMapping(params="p=caipiaodianlisting")
 	@ResponseBody
 	public String caipiaodianlisting(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="5") int size)
@@ -136,6 +143,7 @@ public class CaiPiaoDianAction {
 			return json;
 		}
 	}
+	
 	@RequestMapping(params="p=dianlistingid")
 	public String dianlistingid()
 	{
@@ -147,6 +155,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("id", id);
 		return "/admin/caipiaodian/dianlistingxiugai.jsp";
 	}
+	
 	@RequestMapping(params="p=dianlisting")
 	@ResponseBody
 	public String dianlisting(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="5") int size)
@@ -159,17 +168,18 @@ public class CaiPiaoDianAction {
 		System.out.println(json);
 		return json;
 	}
+	
 	@RequestMapping(params="p=arealisting")
 	@ResponseBody
 	public String arealisting()
 	{
-		
 		List list = service.arealisting();
 		JsonConfig config = new JsonConfig();
 		JsonFilter.ignoredSet(config);
 		String json = JSONArray.fromObject(list, config).toString();
 		return json;
 	}
+	
 	@RequestMapping(params="p=citylisting")
 	@ResponseBody
 	public String citylisting()
@@ -181,6 +191,7 @@ public class CaiPiaoDianAction {
 		String json = JSONArray.fromObject(list, config).toString();
 		return json;
 	}
+	
 	@RequestMapping(params="p=qulisting")
 	@ResponseBody
 	public String qulisting()
@@ -193,6 +204,7 @@ public class CaiPiaoDianAction {
 		String json = JSONArray.fromObject(list, config).toString();
 		return json;
 	}
+	
 	@RequestMapping(params="p=dianlistingupdate")
 	@ResponseBody
 	public String dianlistingupdate()
@@ -214,6 +226,7 @@ public class CaiPiaoDianAction {
 		service.dianlistingupdate(id,shoujihao,password,stores,qu,address,jingdu,weidu,isfucai,isticai,tixian,begintime,endtime,time);
 		return "修改成功";
 	}
+	
 	@RequestMapping(params="p=caipiaolisting")
 	public String caipiaolisting(@RequestParam(defaultValue="1") int page, @RequestParam(defaultValue="5") int size)
 	{
@@ -225,6 +238,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("caipiaomap", map);
 		return "/admin/caipiao/caipiao.jsp";
 	}
+	
 	@RequestMapping(params="p=caipiao_leixinglisting")
 	public String caipiao_leixinglisting(@RequestParam(defaultValue="1") int page, @RequestParam(defaultValue="5") int size)
 	{
@@ -236,6 +250,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("caipiaomap", map);
 		return "/admin/caipiao/caipiao_leixing.jsp";
 	}
+	
 	@RequestMapping(params="p=caipiao_leixing_add")
 	@ResponseBody
 	public String caipiao_leixing_add()
@@ -245,6 +260,7 @@ public class CaiPiaoDianAction {
 		service.caipiao_leixing_add(caipiao_leixing,status);
 		return "添加成功";
 	}
+	
 	@RequestMapping(params="p=caipiao_leixinglistingid")
 	public String caipiao_leixinglistingid()
 	{
@@ -273,6 +289,7 @@ public class CaiPiaoDianAction {
 		String json = JSONObject.fromObject(caipiaoLeixing,config).toString();
 		return json;
 	}
+	
 	/*新增彩票
 	 * @param name,type,price,begintime,endtime,status,kaijiangtime,jiangchi
 	 * return 新增成功
@@ -292,6 +309,7 @@ public class CaiPiaoDianAction {
 		service.addcaipiaolisting(name,type,price,begintime,endtime,status,kaijiangtime,jiangchi);
 		return "新增成功";
 	}
+	
 	/* 作者：马日升
 	 * 编辑
 	 * @param caipiao_leixing,status
@@ -307,6 +325,7 @@ public class CaiPiaoDianAction {
 		service.caipiao_leixing_bianji(id,caipiao_leixing,status);
 		return "编辑成功";
 	}
+	
 	/*作者：马日升
 	 * 查所有彩票一级类型
 	 * @param null
@@ -322,6 +341,7 @@ public class CaiPiaoDianAction {
 		String json = JSONArray.fromObject(list,config).toString();
 		return json;
 	}
+	
 	/*作者：马日升
 	 * 查所有彩票二级类型
 	 * @param null
@@ -337,6 +357,7 @@ public class CaiPiaoDianAction {
 		String json = JSONArray.fromObject(list,config).toString();
 		return json;
 	}
+	
 	/*作者：马日升
 	 *@param id
 	 *把id传入编辑页
@@ -353,6 +374,7 @@ public class CaiPiaoDianAction {
 		request.setAttribute("id", id);
 		return "/admin/caipiao/caipiao_biji.jsp";
 	}
+	
 	/*作者：马日升
 	 *@param id 
 	 * return 地址：彩票编辑页
@@ -368,6 +390,7 @@ public class CaiPiaoDianAction {
 		String json = JSONObject.fromObject(caipiaobiaodesc,config).toString().replaceAll("  " , " ");
 		return json;
 	}
+	
 	@RequestMapping(params="p=caipiao_biji_insert")
 	@ResponseBody
 	public String caipiao_biji_insert()

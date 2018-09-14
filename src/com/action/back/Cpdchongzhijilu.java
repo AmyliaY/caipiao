@@ -21,14 +21,12 @@ import com.service.back.CpdChongzhijiluService;
 import com.util.StringUtil;
 
 /**
- * 
- * 
  * @author marisheng
- *
  */
 @Controller
 @RequestMapping("/cpdchongzhirecord.do")
 public class Cpdchongzhijilu {
+	
 	@Autowired
 	private CpdChongzhijiluService service;
 	@Autowired

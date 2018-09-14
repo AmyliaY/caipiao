@@ -19,18 +19,17 @@ import com.service.back.ChongzhijiluService;
 import com.util.StringUtil;
 
 /**
- * 
- * 
  * @author marisheng
- *
  */
 @Controller
 @RequestMapping("/chongzhirecord.do")
 public class Chongzhijilu {
+	
 	@Autowired
 	private ChongzhijiluService service;
 	@Autowired
 	private HttpServletRequest request;
+	
 	@RequestMapping(params="p=chongzhilisting")
 	public String chongzhilisting(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="5") int size)
 	{
@@ -46,6 +45,7 @@ public class Chongzhijilu {
 		request.setAttribute("map", map);
 		return "/admin/chongzhijilu/chongzhijilu.jsp";
 	}
+	
 	@RequestMapping(params="p=delete")
 	@ResponseBody
 	public String delete()
@@ -55,6 +55,7 @@ public class Chongzhijilu {
 		service.delete(id);
 		return "success";
 	}
+	
 	@RequestMapping(params="p=getChongzhijiluById")
 	public String getChongzhijiluById()
 	{
@@ -68,6 +69,7 @@ public class Chongzhijilu {
 		request.setAttribute("userschongzhijilu", userschongzhijilu);
 		return "admin/chongzhijilu/chongzhijilu_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=getdingdanid")
 	@ResponseBody
 	public String getdingdanid()
@@ -75,6 +77,7 @@ public class Chongzhijilu {
 		String json = service.getdingdanid();
 		return json;
 	}
+	
 	@RequestMapping(params="p=bianji")
 	@ResponseBody
 	public String bianji(){

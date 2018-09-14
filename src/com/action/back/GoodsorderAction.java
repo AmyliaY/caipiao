@@ -19,10 +19,12 @@ import com.service.back.GoodsorderService;
 @Controller
 @RequestMapping("/goodsorder.do")
 public class GoodsorderAction {
+	
 	@Autowired
 	private HttpServletRequest request;
 	@Autowired
 	private GoodsorderService service;
+	
 	@RequestMapping(params="p=orderslisting")
 	public String orderslisting(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="5") int size)
 	{
@@ -39,6 +41,7 @@ public class GoodsorderAction {
 		request.setAttribute("map", map);
 		return "/admin/goodsorder/goodsorderlisting.jsp";
 	}
+	
 	@RequestMapping(params="p=delete")
 	@ResponseBody
 	public String delete()
@@ -48,6 +51,7 @@ public class GoodsorderAction {
 		service.delete(id);
 		return "success";
 	}
+	
 	@RequestMapping(params = "p=getgoodsorderById")
 	public String getChongzhijiluById() {
 		Admin admin = (Admin) request.getSession().getAttribute("admin");
@@ -60,6 +64,7 @@ public class GoodsorderAction {
 		request.setAttribute("dingdan", dingdan);
 		return "admin/goodsorder/goodsorder_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=getjiedancpdid")
 	@ResponseBody
 	public String getjiedancpdid()
@@ -68,6 +73,7 @@ public class GoodsorderAction {
 		String json = service.getjiedancpdid();
 		return json;
 	}
+	
 	@RequestMapping(params = "p=bianji")
 	@ResponseBody
 	public String bianji() {
