@@ -13,12 +13,8 @@ import java.util.Properties;
  * 
  */
 public class WeixinConfig {
-	 
-	
     
 	public static String TOKEN = null;//"a1314520";
-
-    
 	public  static  String APPID = null;//"wx225617f3db0beec0";
 	public  static  String APPSECRET = null;//"189b9553df89662f10d0568d5019396f";
 	public  static  String MCH_ID = null; //商户号
@@ -27,6 +23,7 @@ public class WeixinConfig {
 	public  static  String url = null;
 	public  static  String weixinurl = null;
 	public  static  String status= null;
+	
 	public static String getStatus() {
 		return status;
 	}
@@ -76,41 +73,28 @@ public class WeixinConfig {
 	}
 
 	static{
-		
-	        String result=null;  
-	        
-			Properties prop = new Properties();
-			InputStream fis = WeixinConfig.class.getResourceAsStream("/WeixinConfig.properties");
-	       
-	       try {
-				
-				 prop.load(fis);
-				 TOKEN = prop.getProperty("TOKEN").trim();
-			       APPID = prop.getProperty("APPID").trim();
-			       APPSECRET = prop.getProperty("APPSECRET").trim();
-			       MCH_ID = prop.getProperty("MCH_ID").trim();
-			       PAY_KEY = prop.getProperty("PAY_KEY").trim();
-			       zhanghao = prop.getProperty("zhanghao");
-			      url = prop.getProperty("url");	
-			       weixinurl = prop.getProperty("weixinurl");	
-			       status = prop.getProperty("status");
-				  fis.close();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	       
-	       
-          
-		     
-
-           	
+        String result=null;  
+		Properties prop = new Properties();
+		InputStream fis = WeixinConfig.class.getResourceAsStream("/WeixinConfig.properties");
+        try {
+			 prop.load(fis);
+			 TOKEN = prop.getProperty("TOKEN").trim();
+		     APPID = prop.getProperty("APPID").trim();
+		     APPSECRET = prop.getProperty("APPSECRET").trim();
+		     MCH_ID = prop.getProperty("MCH_ID").trim();
+		     PAY_KEY = prop.getProperty("PAY_KEY").trim();
+		     zhanghao = prop.getProperty("zhanghao");
+		     url = prop.getProperty("url");	
+		     weixinurl = prop.getProperty("weixinurl");	
+		     status = prop.getProperty("status");
+			 fis.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-	
-	
-
 }
 

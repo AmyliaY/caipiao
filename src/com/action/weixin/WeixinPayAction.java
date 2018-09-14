@@ -57,100 +57,18 @@ public class WeixinPayAction {
 		if (index > -1) {
 			money2 = money2.substring(0, index);
 		}
-
-		// money2="1";
-
 		unifiedorder.setTotal_fee(money2); // 订单总金额，分 money
 		unifiedorder.setAttach("");
 		unifiedorder.setTrade_type("NATIVE");
-
 		String sign = SignatureUtil.generateSign(MapUtil.objectToMap(
 				unifiedorder, "sign"), payKey);
 		unifiedorder.setSign(sign);
 		UnifiedorderResult unifiedorderResult = new PayMchAPI()
 				.payUnifiedorder(unifiedorder);
-
 		String code_url = unifiedorderResult.getCode_url();
 		System.out.println(code_url);
 	}
 
-	
-	
-	
-	
-	
-/*	
-	 * 微信端支付发起
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws IOException
-	 *//*
-	@RequestMapping(params="p=weinPay")
-	public String weixinPay(HttpServletRequest request,HttpServletResponse response)
-		throws IOException{
-			
-		Weixinuser weixinuser = (Weixinuser) request.getSession().getAttribute("weixinuser"); //判断
-		
-		//判断是否登陆
-		if(request.getSession().getAttribute("weixinuser")!=null){
-			return "/weixin/home/login.jsp";
-		}
-		
-		String orderId  = UUID.randomUUID().toString().replaceAll("-", ""); //随机订单
-		int userid   = weixinuser.getUserinfo().getUsersId();  //用户编号
-		
-		int avid = 0;
-		int kid = 0;
-		
-		String avidString = request.getParameter("avid");
-		String kidString  = request.getParameter("kid");
-		
-		if(StringUtil.isNotNull(kidString)){
-			kid = Integer.parseInt(kidString);
-		}
-		
-		if(StringUtil.isNotNull(avidString)){
-			avid = Integer.parseInt(avidString);
-		}
-		
-		String workname =  new String(request.getParameter("wname").getBytes("ISO-8859-1"), "UTF-8"); //打赏者姓名
-
-		String workimage = request.getParameter("wimages");
-		int tujing   = 1; //微信支付
-		String money = request.getParameter("money");
-		
-		添加一个支付订单  状态为未成功
-	//	payContributionService.AddContribution(orderId, userid, avid, kid, money, workname, workimage, tujing);
-		调用微信支付
-		String notifyUrl = URLManager.getServerURL(request) + "/weixinPay.do"; // 异步通知地址http://iptv2.vicp.net/jht_1
-		String openId = weixinuser.getOpenid();
-		String json = JSSDKUtil.setPayParam(request, notifyUrl, money, orderId, openId);
-		//存订单编号，用于支付成功后   修改支付状态	
-		request.setAttribute("orderId",orderId );
-		request.setAttribute("money", money);;
-		return "/pay/weixinpay/pay_example.jsp";
-	}*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * 微信扫码支付
 	 * 
@@ -163,12 +81,9 @@ public class WeixinPayAction {
 	public String toPay(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		response.setContentType("text/html;charset=utf-8");
-
 		String id = request.getParameter("id"); // 订单ID
 		float money = Float.parseFloat(request.getParameter("money"));// 支付金额
-
 		String name = "";
-
 		String appid = WeixinConfig.APPID;// "wx94df44a32ee2fabc"
 		String secret = WeixinConfig.APPSECRET;// "c7c8da0e239b43acde5007fe126dfefc"
 		String mch_id = WeixinConfig.MCH_ID; // 商户号
@@ -180,8 +95,7 @@ public class WeixinPayAction {
 		unifiedorder.setDevice_info("");
 		unifiedorder.setGoods_tag("");
 		unifiedorder.setMch_id(mch_id);
-		unifiedorder.setNonce_str(UUID.randomUUID().toString().replaceAll("-",
-				""));
+		unifiedorder.setNonce_str(UUID.randomUUID().toString().replaceAll("-", ""));
 		unifiedorder.setNotify_url(notifyUrl);// 通知地址
 		unifiedorder.setOut_trade_no(id); // 外部订单号
 		unifiedorder.setProduct_id("131452");// 产品号（二维码时有用)
@@ -195,19 +109,13 @@ public class WeixinPayAction {
 		if (index > -1) {
 			money2 = money2.substring(0, index);
 		}
-
-		// money2="1";
-
 		unifiedorder.setTotal_fee(money2); // 订单总金额，分 money
 		unifiedorder.setAttach("");
 		unifiedorder.setTrade_type("NATIVE");
-
 		String sign = SignatureUtil.generateSign(MapUtil.objectToMap(
 				unifiedorder, "sign"), payKey);
 		unifiedorder.setSign(sign);
-		UnifiedorderResult unifiedorderResult = new PayMchAPI()
-				.payUnifiedorder(unifiedorder);
-
+		UnifiedorderResult unifiedorderResult = new PayMchAPI().payUnifiedorder(unifiedorder);
 		String code_url = unifiedorderResult.getCode_url();
 		System.out.println(code_url);
 		if (StringUtil.isNull(code_url)) {
@@ -216,21 +124,17 @@ public class WeixinPayAction {
 		}
 		String imgPath = request.getSession().getServletContext().getRealPath(
 				"/tempImages/" + id + ".png"); // 二维码存放的图片路径，请修改成实际图片
-
 		String encoderContent = code_url;
 		T2DMa ma = new T2DMa();
 		ma.encoderQRCode(encoderContent, imgPath, "png");
 		request.setAttribute("weixianpay", id + ".png");
 		request.setAttribute("id", id);
 		request.setAttribute("money", money);
-
 		return "/pay/weixinpay/pay.jsp";
-
 	}
 
 	/**
 	 * 微信支付回调函数
-	 * 
 	 * @param request
 	 * @param response
 	 * @return
@@ -243,16 +147,10 @@ public class WeixinPayAction {
 		byte[] b = new byte[1024];
 		int size = is.read(b);
 		String str = new String(b, 0, size);
-
 		// 获取请求数据
 		PayNotify payNotify = XMLConverUtil.convertToObject(PayNotify.class,
 				str);
-
 		// 签名判断略...
-		{
-
-		}
-
 		System.out.println("##########come on#########");
 		System.out.println(payNotify.getResult_code());
 		System.out.println(payNotify.getReturn_code());
@@ -262,66 +160,18 @@ public class WeixinPayAction {
 		if ("SUCCESS".equals(payNotify.getResult_code())
 				&& "SUCCESS".equals(payNotify.getReturn_code())) {
 			String trade_no = payNotify.getOut_trade_no();
-			//if (trade_no.startsWith("jhthg"))
 			{
 				System.out.println("lailemei:微信支付");
 				float money = 0.0f;
 				if (payNotify.getTotal_fee() != null) {
 					money = Float.parseFloat(payNotify.getTotal_fee()) / 100;
 				}
-				// String id=trade_no.substring(4);
 				// 这里支付成功后修改订单状态
-				//payService.payNew(trade_no, null, money + "");
-
 				response.getOutputStream().write("success".getBytes());
 			}
-
-//			if (trade_no.startsWith("JHTWx")) {
-//				// System.out.println("lailemei:商品微信支付");
-//				float money = 0.0f;
-//				if (payNotify.getTotal_fee() != null) {
-//					money = Float.parseFloat(payNotify.getTotal_fee()) / 100;
-//				}
-//				// String id=trade_no.substring(4);
-//				// 这里支付成功后修改订单状态
-//				//payService.payNew(trade_no, null, money + "");
-//
-//				response.getOutputStream().write("success".getBytes());
-//			}
-//
-//			// 经纪商免费入住 申请 靓号购买
-//			if (trade_no.startsWith("zfmfr")) {
-//				// System.out.println("lailemei:商品微信支付");
-//				float money = 0.0f;
-//				if (payNotify.getTotal_fee() != null) {
-//					money = Float.parseFloat(payNotify.getTotal_fee()) / 100;
-//				}
-//				// String id=trade_no.substring(4);
-//				// 这里支付成功后修改订单状态
-//				//payService.payNew(trade_no, null, money + "");
-//
-//				response.getOutputStream().write("success".getBytes());
-//			}
-//
-//			// 经纪人申请
-//			if (trade_no.startsWith("JWXJJ")) {
-//				// System.out.println("lailemei:商品微信支付");
-//				float money = 0.0f;
-//				if (payNotify.getTotal_fee() != null) {
-//					money = Float.parseFloat(payNotify.getTotal_fee()) / 100;
-//				}
-//				// String id=trade_no.substring(4);
-//				// 这里支付成功后修改订单状态
-//				//payService.payNew(trade_no, null, money + "");
-//
-//				response.getOutputStream().write("success".getBytes());
-//			}
-
 		} else {
 			response.getOutputStream().write("error".getBytes());
 		}
-
 		return null;
 	}
-
 }
