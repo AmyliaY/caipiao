@@ -7,7 +7,6 @@ import java.util.Properties;
 /**
  * 基础参数
  * @author ldz
- *
  */
 public class JccsVO {
 	
@@ -69,6 +68,5 @@ public class JccsVO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 }

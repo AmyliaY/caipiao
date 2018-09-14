@@ -29,6 +29,7 @@ import net.sf.json.processors.DefaultValueProcessor;
 @Controller
 @RequestMapping("/users.do")
 public class UserAction {
+	
 	@Autowired
 	private HttpServletRequest request;
 	@Autowired
@@ -40,7 +41,6 @@ public class UserAction {
 	private void doTest(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		System.out.println("到了验证码1");
-
 		String mobile = request.getParameter("iphone");
 		System.out.println(mobile);
 		String code = SmsUtil.createCode(4);
@@ -66,17 +66,7 @@ public class UserAction {
 		System.out.println("昵称：" + name);
 		String clientId = request.getParameter("clientId");
 		service.save(mobile, password, name, clientId);
-		// Weixinuser weixinuser = (Weixinuser)
-		// request.getSession().getAttribute("weixinuser");
-		// if(usersReferrer==null){
-		// service.zhuce(mobile, password,name,weixinuser);
-		// }else{
-		// service.zhuceWithReferrer(mobile,
-		// password,usersReferrer,name,weixinuser);
-		// }
-
 		return "true";
-
 	}
 
 	/*
@@ -92,7 +82,6 @@ public class UserAction {
 		Map map = service.findall(page, size);
 		request.setAttribute("map", map);
 		return "/admin/userlisting/userlisting.jsp";
-
 	}
 
 	@RequestMapping(params = "p=userlisting_biji")
@@ -104,7 +93,6 @@ public class UserAction {
 		String id = request.getParameter("id");
 		request.setAttribute("id", id);
 		return "/admin/userlisting/userlisting_biji.jsp";
-
 	}
 
 	/*
@@ -118,28 +106,16 @@ public class UserAction {
 		JsonConfig config = new JsonConfig();
 		config.registerDefaultValueProcessor(Integer.class,new DefaultValueProcessor()
 		{
-
 			@Override
 			public Object getDefaultValue(Class arg0) {
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
-			
 		});
 		JsonFilter.ignoredSet(config);
 		String json = JSONObject.fromObject(users, config).toString();
 		System.out.println(json);
-		/*
-		 * 
-		 * 进行json格式测试
-		 */
-		// String json1 = "
-		// {'bank':'123','dengji':123,'dongji':123,'id':1,'jifen':100,'name':'mrs','password':'205434267','phone':'15674133317','shoucangdianpu':123,'time':'2007-12-02
-		// 15:23:23','touxiang':'1.jpg','tuijiandianpu':123,'xingming':'123','yitixian':123,'zhanghao':'1231'}";
-		// System.out.println(json1);
 		return json;
-
 	}
 
 	@RequestMapping(params = "p=userlisting_biji_tijiao")
