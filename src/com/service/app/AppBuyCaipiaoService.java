@@ -165,7 +165,6 @@ public class AppBuyCaipiaoService {
 		return null;
 	}
 	
-	
 	/**
 	 * 根据当前用户所在的区县，列出该地区的彩票店，分页
 	 * @param qu 
@@ -208,7 +207,6 @@ public class AppBuyCaipiaoService {
 			System.out.println("市:"+shi);
 			paramlist.add("%"+shi.trim()+"%");
 		}
-		
 		String hql="from Caipiaodian "+sb;
 		System.out.println(hql);
 		List caipiaodianList=hqlDAO.pageQuery(hql, size, page, paramlist.toArray());
@@ -333,7 +331,6 @@ public class AppBuyCaipiaoService {
 		return "yes";
 	}
 
-	
 	/**
 	 * 查询所有的caipiaobiao
 	 * @return
@@ -347,7 +344,6 @@ public class AppBuyCaipiaoService {
 		JSONObject obj = new JSONObject();
 		obj.putAll(map, config);
 		String json = obj.toString();
-		
 		return json;
 	}
 
@@ -400,7 +396,7 @@ public class AppBuyCaipiaoService {
 	 * @param orderDescList
 	 */
 	public void createOrderByFC3D(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -423,7 +419,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	public String confirmOrdersByFC3D(Integer userid) {
@@ -450,7 +445,7 @@ public class AppBuyCaipiaoService {
 	}
 
 	public void createOrderByQLC(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -473,7 +468,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	public String confirmOrdersByQLC(Integer userid) {
@@ -500,7 +494,7 @@ public class AppBuyCaipiaoService {
 	}
 
 	public void createOrderByDLT(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -523,7 +517,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	public String confirmOrdersByDLT(Integer userid) {
@@ -550,7 +543,7 @@ public class AppBuyCaipiaoService {
 	}
 
 	public void createOrderByQXC(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -573,7 +566,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	public String confirmOrdersByQXC(Integer userid) {
@@ -600,7 +592,7 @@ public class AppBuyCaipiaoService {
 	}
 
 	public void createOrderByPLS(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -623,7 +615,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	public String confirmOrdersByPLS(Integer userid) {
@@ -650,7 +641,7 @@ public class AppBuyCaipiaoService {
 	}
 
 	public void createOrderByPLW(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -673,7 +664,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	public String confirmOrdersByPLW(Integer userid) {
@@ -700,7 +690,7 @@ public class AppBuyCaipiaoService {
 	}
 
 	public void createOrderBySYXW(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -723,7 +713,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	public String confirmOrdersBySYXW(Integer userid) {
@@ -779,7 +768,7 @@ public class AppBuyCaipiaoService {
 	 * @param orderDescList
 	 */
 	public void createOrderByZCSF(Integer userid, String cpid, String zhushu, String money,
-			List<Dingdanxiangqing> orderDescList) {
+		List<Dingdanxiangqing> orderDescList) {
 		//创建订单
 		Dingdan dingdan = new Dingdan();
 		String orderid = UUID.randomUUID().toString().replace("-", "").toLowerCase();
@@ -802,7 +791,6 @@ public class AppBuyCaipiaoService {
 			dingdanxiangqing.setDingdan(dingdan);
 			dingdanxiangqingDAO.save(dingdanxiangqing);
 		}
-		
 	}
 
 	/**
@@ -832,13 +820,4 @@ public class AppBuyCaipiaoService {
 		String json = obj.toString();
 		return json;
 	}
-
-	
-	
-
-	
-
-	
-
-	
 }
