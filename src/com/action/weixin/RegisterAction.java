@@ -21,63 +21,60 @@ import com.service.app.AppRegisterService;
 import com.service.back.UserService;
 import com.util.SmsUtil;
 
-
 @Controller
 @RequestMapping("/message.do")
 public class RegisterAction {
 	
-@Autowired
-private UserService userService;
-@Autowired
-private AppRegisterService appregisterservice;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private AppRegisterService appregisterservice;
 
-@RequestMapping(params="method=get")
-private void doTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	System.out.println("到了验证码1");
-	String name=request.getParameter("name");
-	if (name!=null)
-		name = new String(name.getBytes("iso8859-1"),"utf-8");
-	System.out.println("用户名："+name);
-	List list2=userService.findByUsername(name);
-	if(list2.size()>0)
-	{
-		response.getWriter().print("nameFalse");
-		return;
-	}
-	String mobile=request.getParameter("iphone");
-	List list=userService.findByMobile(mobile);
-	if(list.size()>0)
-	{
-		response.getWriter().print("false");
-		return;
-	}
-	String code=SmsUtil.createCode(4);
-	String content="您的验证码为:"+code;
-	appregisterservice.saveCode(code, mobile);
-	//request.getSession().setAttribute("code", code);
-	  System.out.println("到了验证码2");
+	@RequestMapping(params="method=get")
+	private void doTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("到了验证码1");
+		String name=request.getParameter("name");
+		if (name!=null)
+			name = new String(name.getBytes("iso8859-1"),"utf-8");
+		System.out.println("用户名："+name);
+		List list2=userService.findByUsername(name);
+		if(list2.size()>0)
+		{
+			response.getWriter().print("nameFalse");
+			return;
+		}
+		String mobile=request.getParameter("iphone");
+		List list=userService.findByMobile(mobile);
+		if(list.size()>0)
+		{
+			response.getWriter().print("false");
+			return;
+		}
+		String code=SmsUtil.createCode(4);
+		String content="您的验证码为:"+code;
+		appregisterservice.saveCode(code, mobile);
+		System.out.println("到了验证码2");
 		SmsUtil.send(mobile, content);
 	}
-@RequestMapping(params="method=fows")
-private void doTestfows(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	String mobile=request.getParameter("iphone");
-	List list=userService.findByMobile(mobile);
-	if(list.size()==0)
-	{
-		response.getWriter().print("false");
-		return;
+	
+	@RequestMapping(params="method=fows")
+	private void doTestfows(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String mobile=request.getParameter("iphone");
+		List list=userService.findByMobile(mobile);
+		if(list.size()==0)
+		{
+			response.getWriter().print("false");
+			return;
+		}
+		String code=SmsUtil.createCode(4);
+		String content="您的验证码为:"+code;
+		appregisterservice.saveCode(code, mobile);
+			SmsUtil.send(mobile, content);
 	}
-	String code=SmsUtil.createCode(4);
-	String content="您的验证码为:"+code;
-	appregisterservice.saveCode(code, mobile);
-	//request.getSession().setAttribute("code", code);
-		SmsUtil.send(mobile, content);
-	}
-@RequestMapping(params="method=code")
-private void doCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	
+	@RequestMapping(params="method=code")
+	private void doCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	    String mobile=request.getParameter("mobile");
-	    
-	  
 		String code=request.getParameter("code");//得到验证码
 		System.out.println(code);
 		List list=appregisterservice.findJihuoma(mobile, code);
@@ -95,14 +92,11 @@ private void doCode(HttpServletRequest request, HttpServletResponse response) th
 			{
 				response.getWriter().print("no");
 			}
-			
 		}
 		else
 		{
 			response.getWriter().print("no");
 		}
-		
-		
 	}
 }
 

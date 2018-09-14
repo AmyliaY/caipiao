@@ -59,6 +59,7 @@ public class JCCSAction {
 		request.setAttribute("map", map);
 		return "/admin/jccs/jccs.jsp";
 	}
+	
 	/**
 	 * 编辑参数
 	 * @param request

@@ -27,9 +27,7 @@ import weixin.popular.util.XMLConverUtil;
 
 /**
  * 关于爱购
- * 
  * @author lgh
- * 
  */
 @Controller
 @RequestMapping("/weixinAbout.do")
@@ -42,7 +40,6 @@ public class WeiXinAboutAction {
 		String str = "<xml><appid><![CDATA[wx225617f3db0beec0]]></appid><attach><![CDATA[WWW]]></attach><bank_type><![CDATA[CFT]]></bank_type><cash_fee><![CDATA[1]]></cash_fee><fee_type><![CDATA[CNY]]></fee_type><is_subscribe><![CDATA[Y]]></is_subscribe><mch_id><![CDATA[1264112801]]></mch_id><nonce_str><![CDATA[142b954d54be4812a5e2f43c085ffd1c]]></nonce_str><openid><![CDATA[oEaMPwVxbFq4IfHf9ZfPBSdCrkYo]]></openid><out_trade_no><![CDATA[sunjob201704160002]]></out_trade_no><result_code><![CDATA[SUCCESS]]></result_code><return_code><![CDATA[SUCCESS]]></return_code><sign><![CDATA[C3153E0C4AF339B6FE0A052088079260]]></sign><time_end><![CDATA[20160417002008]]></time_end><total_fee>1</total_fee><trade_type><![CDATA[JSAPI]]></trade_type><transaction_id><![CDATA[4001602001201604174916499824]]></transaction_id></xml>";
 		PayNotify payNotify = XMLConverUtil.convertToObject(PayNotify.class,
 				str);
-
 		// 签名判断略...
 		String sign = payNotify.getSign();
 		System.out.println("main()");
@@ -70,7 +67,6 @@ public class WeiXinAboutAction {
 	 * <trade_type><![CDATA[JSAPI]]></trade_type>
 	 * <transaction_id><![CDATA[4001602001201604174916499824]]></transaction_id>
 	 * </xml>
-	 * 
 	 * @param response
 	 * @return
 	 * @throws IOException
@@ -85,31 +81,22 @@ public class WeiXinAboutAction {
 		// 获取请求数据
 		PayNotify payNotify = XMLConverUtil.convertToObject(PayNotify.class,
 				str);
-
 		// 签名判断略...
 		String sign = payNotify.getSign();
-
 		boolean f = SignatureUtil.validateAppSignature(payNotify,
 				WeixinConfig.PAY_KEY);
 		System.out.println("签名判断："+f);
-		
-
 		if (true)
 			return null;
-
 		// 支付成功
 		if ("SUCCESS".equals(payNotify.getResult_code())
 				&& "SUCCESS".equals(payNotify.getReturn_code())) {
 			String trade_no = payNotify.getOut_trade_no();
-			
 			response.getOutputStream().write("success".getBytes());
-
 		} else {
 			response.getOutputStream().write("error".getBytes());
 		}
-
 		return null;
-
 	}
 
 	@RequestMapping(params = "p=toPay")
@@ -118,12 +105,10 @@ public class WeiXinAboutAction {
 		String id = request.getParameter("id");
 		String money = request.getParameter("money");
 		String openId = (String) request.getSession().getAttribute("openId");
-
 		// 2.去支付
 		String notifyUrl = "http://iptv2.vicp.net/jiayouzhan/weixinAbout.do";
 		String json = JSSDKUtil.setPayParam(request, notifyUrl, money, id,
 				openId);
-
 		// 4.调用微信支付
 		return "/pay_example.jsp";
 	}
@@ -140,7 +125,6 @@ public class WeiXinAboutAction {
 		// System.out.println("客户微信号------------"+weixinhao);
 		// --------------- end 获取客户的微信号----------------//
 		System.out.println("微信号:" + weixinhao);
-
 		return "/index.jsp";
 	}
 
@@ -155,12 +139,9 @@ public class WeiXinAboutAction {
 				.getOpenId(appid, secret, code);
 		String weixinhao = accessToken.getOpenid();
 		System.out.println("微信号:" + weixinhao); // 有的时候，要验证是否新用户，就要录入手机号码
-
 		// 如果要使用jssdk
 		JSSDKUtil.setJsSdkParam(request);
-
 		request.getSession().setAttribute("openId", accessToken.getOpenid());
-
 		return "/weixin_share.jsp";
 	}
 }

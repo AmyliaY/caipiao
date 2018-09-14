@@ -39,33 +39,30 @@ import com.util.Upload;
 @Controller
 @RequestMapping("/applogin.do")
 public class AppLoginAction {
+	
 	@Autowired
 	private AppLoginService appLoginService;
 	@Autowired
 	private HttpServletRequest request;
 	
-	
 	/**
-	 * 
 	 * @return
 	 */
 	@RequestMapping(params="p=isLogin")
 	@ResponseBody
 	public  String isLogin()
 	{
-		 Users  users =   	(Users) request.getSession().getAttribute("users");
-			
-			if(users!=null){
-				JsonConfig config=new JsonConfig();
-				config.setExcludes(new String[]{"password"});
-				JsonFilter.ignoredSet(config);
-				String json = JSONObject.fromObject(users,config).toString();
-				return json;
-			}else{
-				return "";
-			}
+		Users users = (Users) request.getSession().getAttribute("users");
+		if(users!=null){
+			JsonConfig config=new JsonConfig();
+			config.setExcludes(new String[]{"password"});
+			JsonFilter.ignoredSet(config);
+			String json = JSONObject.fromObject(users,config).toString();
+			return json;
+		}else{
+			return "";
+		}
 	}
-	
 	
 	/**
 	 * 登录
@@ -79,14 +76,10 @@ public class AppLoginAction {
 	{
 		String username=request.getParameter("username");
 		String userpwd=request.getParameter("userpwd");
-	//	System.out.println(userpwd);
 		String userpwd2 = MD5Util.getMD5(MD5Util.getMD5(userpwd + "sunjob")
 				+ "sunjob");
-	
 		Users users=appLoginService.applogin(username,userpwd2);
-		
 		request.getSession().setAttribute("users", users);
-		
 		if(users!=null){
 			JsonConfig config=new JsonConfig();
 			config.setExcludes(new String[]{"password"});
@@ -124,20 +117,15 @@ public class AppLoginAction {
 	public String uploadHeadimg(HttpServletResponse response) throws IOException
 	{
 		String path=request.getSession().getServletContext().getRealPath("/admin/images/tx");// 上传到指定目录
-		
 		Users user =  (Users) request.getSession().getAttribute("users");
 		int id =user.getId();	//会员ID
-		
 		String imgdata=request.getParameter("imgdata");	//图片
 		String imgPath=request.getParameter("imgPath");	//图片路径
 		String userPhone=user.getPhone();//request.getParameter("userPhone");	//用户手机号码
-		//System.out.println("imgdata:"+imgdata);
-		//System.out.println("imgPath:"+imgPath);
 		
 		int index=imgPath.lastIndexOf(".");
 		String ss=imgPath.substring(index);
 		String newHeadimg=userPhone+"-"+System.currentTimeMillis()+ss;//图片名称
-		//System.out.println(path+"/"+newHeadimg);
 		
 		//删除文件夹中之前的头像图片
         File folder = new File(path);
@@ -165,21 +153,11 @@ public class AppLoginAction {
         out.write(b);  
         out.flush();  
         out.close();  
-        
-		
 		boolean f=appLoginService.uploadHeadimg(id,newHeadimg);
 		if(f)
 			response.getWriter().print(true);
 		else
 			response.getWriter().print(false);
-//		System.out.println(newHeadimg);
-//		System.out.println("会员ID："+id);
-//		System.out.println("头衔："+imgdata);
 		return null;
 	}
-	
-	
-	
-	
-	
 }
