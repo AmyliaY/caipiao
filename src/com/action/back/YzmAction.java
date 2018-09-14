@@ -19,19 +19,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sun.image.codec.jpeg.ImageFormatException;
 
 /**
- * 
  *  验证码
- * 
  */
-
-
 @Controller
 @RequestMapping("/yzm.do")
 public class YzmAction {
 
 	@Autowired
 	private HttpServletRequest request;
-
 
 	private static Random random = new Random();
 
@@ -95,7 +90,5 @@ public class YzmAction {
 		// 转换图片格式
 		ImageIO.write(bi, "jpg", out);// 对图片进行编码
 		out.flush();// 输出
-
 	}
-
 }

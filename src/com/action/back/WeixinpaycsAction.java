@@ -21,6 +21,7 @@ import com.action.weixin.WeixinConfig;
 @Controller
 @RequestMapping("/weixinpaycs.do")
 public class WeixinpaycsAction {
+	
 	/**
 	 * 微信参数
 	 * @param request
@@ -40,8 +41,8 @@ public class WeixinpaycsAction {
 		map.put("status", wx.getStatus());
 		request.setAttribute("wxmap", map);
 		return "/admin/pay_param/weixinpaycs.jsp";
-		
 	}
+	
 	/**
 	 * 编辑参数
 	 * @param request
@@ -57,9 +58,7 @@ public class WeixinpaycsAction {
 		String appsecret=request.getParameter("appsecret");
 		String mchid=request.getParameter("mchid");
 		String paykey=request.getParameter("paykey");
-		
 		String path=request.getSession().getServletContext().getRealPath("/WEB-INF/classes/WeixinConfig.properties");
-		
 		Properties prop=new Properties();
 		InputStream is = new FileInputStream(path);
 		prop.load(is);
@@ -68,20 +67,18 @@ public class WeixinpaycsAction {
 		prop.setProperty("APPSECRET", appsecret.trim());
 		prop.setProperty("MCH_ID", mchid.trim());
 		prop.setProperty("PAY_KEY", paykey.trim());
-		
 		WeixinConfig.APPID=appid.trim();
 		WeixinConfig.TOKEN=token.trim();
 		WeixinConfig.APPSECRET=appsecret.trim();
 		WeixinConfig.MCH_ID=mchid.trim();
 		WeixinConfig.PAY_KEY=paykey.trim();
-		
 		OutputStream os=new FileOutputStream(path);
 		prop.store(os, null);
 		os.close();
 		is.close();
-		
 		return "/weixinpaycs.do?p=weixinpaycs";
 	}
+	
 	/**
 	 * 修改 微信支付  状态  0:禁用 1：启用
 	 * @param request
@@ -101,7 +98,6 @@ public class WeixinpaycsAction {
 		InputStream is = new FileInputStream(path);
 		prop.load(is);
 		prop.setProperty("status",status.trim());
-		
 		WeixinConfig.setStatus(status.trim());
 		OutputStream os=new FileOutputStream(path);
 		prop.store(os, null);

@@ -23,10 +23,12 @@ import com.service.back.UsersCaiWuService;
 @Controller
 @RequestMapping("/userscaiwu.do")
 public class UsersCaiWuAction {
+	
 	@Autowired
 	private UsersCaiWuService service;
 	@Autowired
 	private HttpServletRequest request;
+	
 	@RequestMapping(params="p=userscaiwu")
 	public String usercaiwu(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="10") int size)
 	{
@@ -38,6 +40,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("map", map);
 		return "/admin/userscaiwu_guanli/userscaiwu.jsp";
 	}
+	
 	@RequestMapping(params="p=userschongzhi")
 	public String userchongzhi(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="10") int size)
 	{
@@ -49,6 +52,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("map", map);
 		return "/admin/userscaiwu_guanli/userschongzhi.jsp";
 	}
+	
 	@RequestMapping(params="p=usercaiwu_bianji")
 	public String usercaiwu_bianji()
 	{
@@ -61,6 +65,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("list", list);
 		return "/admin/userscaiwu_guanli/userscaiwu_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=userscaiwu_bianji_tijiao")
 	@ResponseBody
 	public String userscaiwu_bianji_tijiao()
@@ -76,6 +81,7 @@ public class UsersCaiWuAction {
 		service.tijiao(id,usersname,phone,touxiang,jifen,dongjie,yitixian);
 		return "success";
 	}
+	
 	@RequestMapping(params="p=userscaiwu_bianji_json")
 	@ResponseBody
 	public String userscaiwu_bianji_json()
@@ -84,6 +90,7 @@ public class UsersCaiWuAction {
 		String json = service.bianji_json(id);
 		return json;
 	}
+	
 	@RequestMapping(params="p=userschongzhi_bianji")
 	public String userschongzhi_bianji_json()
 	{
@@ -97,6 +104,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("status", "tijiao");
 		return "/admin/userscaiwu_guanli/userschongzhi_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=usersjson")
 	@ResponseBody
 	public String usersjson() 
@@ -104,6 +112,7 @@ public class UsersCaiWuAction {
 		String json = service.usersjson();
 		return json;
 	}
+	
 	@RequestMapping(params="p=chongzhitijiao")
 	public String zhongZhiTiJiao() throws ServletException, IOException 
 	{	
@@ -120,6 +129,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("status", "success");
 		return "/admin/userscaiwu_guanli/userschongzhi_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=usersxiaofei")
 	public String userxiaofei(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="10") int size)
 	{
@@ -131,6 +141,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("map", map);
 		return "/admin/userscaiwu_guanli/usersxiaofei.jsp";
 	}
+	
 	@RequestMapping(params="p=usersxiaofei_bianji")
 	public String usersxiaofei_bianji()
 	{
@@ -144,6 +155,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("status", "tijiao");
 		return "/admin/userscaiwu_guanli/usersxiaofei_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=xiaofeitijiao")
 	public String xiaofeitijiao()
 	{
@@ -159,6 +171,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("status", "success");
 		return "/admin/userscaiwu_guanli/usersxiaofei_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=storescaiwu_bianji")
 	public String storescaiwu_bianji()
 	{
@@ -172,6 +185,7 @@ public class UsersCaiWuAction {
 		request.setAttribute("status", "tijiao");
 		return "/admin/userscaiwu_guanli/storescaiwu_bianji.jsp";
 	}
+	
 	@RequestMapping(params="p=storescaiwu")
 	public String storescaiwu(@RequestParam(defaultValue="1") int page,@RequestParam(defaultValue="10") int size)
 	{
