@@ -16,7 +16,6 @@ public class AppRegisterService {
 
 	@Autowired
 	private ShoujiduanxiaoxiDAO shoujiduanxiaoxiDAO;
-
 	@Autowired
 	private HqlDAO hqldao;
 
@@ -33,7 +32,6 @@ public class AppRegisterService {
 		shoujiduanxiaoxi.setPhone(mobile);
 		shoujiduanxiaoxi.setTime(time);
 		shoujiduanxiaoxiDAO.save(shoujiduanxiaoxi);
-
 	}
 
 	/**
@@ -47,5 +45,4 @@ public class AppRegisterService {
 		List list = hqldao.findByHQL(hql, code, mobile);
 		return list;
 	}
-
 }

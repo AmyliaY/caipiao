@@ -22,7 +22,6 @@ public class AppRechargePayService {
 	
 	public static void main(String[] args) {
 		//appid=wxe61bb49c4161d3db&body=chongzhi&device_info=shuiguo&goods_tag=shuiguo&mch_id=1508459351&nonce_str=33b5b4fd6e284adeb583076613bb6a20&notify_url=http://www.sssnjt.com/&out_trade_no=9de65fbb570848398f9ef5fd2889d58b&product_id=shuiguo&spbill_create_ip=192.168.0.100&time_expire=20180626171847&time_start=20180625171847&total_fee=1&trade_type=APP
-        //
 		String id = UUID.randomUUID().toString().replaceAll("-", "");
 		float money = Float.parseFloat("0.01");// 支付金额
 
@@ -74,8 +73,6 @@ public class AppRechargePayService {
 		
 		String return_code=unifiedorderResult.getReturn_msg();
 		System.out.println(return_code);
-		
-		
 	}
 
 	public static String payByWxpay(String notifyUrl,HttpServletRequest request, String orderId) {
@@ -90,7 +87,6 @@ public class AppRechargePayService {
 		String appid = "wxe61bb49c4161d3db";// "wxe61bb49c4161d3db"
 		String mch_id ="1508459351"; // 商户号
 		String payKey = "shennongguopinhui201862619871210"; // 支付key
-		
 
 		Unifiedorder unifiedorder = new Unifiedorder();
 		unifiedorder.setAppid(appid);
@@ -177,5 +173,4 @@ public class AppRechargePayService {
 		
 		return json.toString();
 	}
-
 }
