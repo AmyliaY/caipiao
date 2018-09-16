@@ -13,10 +13,12 @@ import com.pojo.Admin;
 
 @Service
 public class AdminListingService {
+	
 	@Autowired
 	private AdminDAO admindao;
 	@Autowired
 	private HqlDAO dao;
+	
 	public Map adminlisting(int page, int size)
 	{
 		if(page<1)
@@ -37,6 +39,7 @@ public class AdminListingService {
 		map.put("list", list);
 		return map;
 	}
+	
 	public void addadmin(String name, String username, String password) {
 		// TODO Auto-generated method stub
 		Admin admin = new Admin();
@@ -46,6 +49,7 @@ public class AdminListingService {
 		admindao.save(admin);
 		
 	}
+	
 	public void editpwd(String id) {
 		// TODO Auto-generated method stub
 		Admin admin = admindao.findById(new Integer(id));

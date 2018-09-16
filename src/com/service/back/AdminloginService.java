@@ -11,6 +11,7 @@ import com.util.MD5Util;
 
 @Service
 public class AdminloginService {
+	
 	@Autowired
 	private HqlDAO hqlDAO;
 	
@@ -30,5 +31,4 @@ public class AdminloginService {
 			return list.get(0);
 		return null;
 	}
-
 }
