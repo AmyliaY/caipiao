@@ -13,6 +13,7 @@ import com.pojo.Users;
 
 @Service
 public class AppLoginService {
+	
 	@Autowired
 	private HqlDAO hqlDAO;
 	@Autowired
@@ -58,5 +59,4 @@ public class AppLoginService {
 		}
 		return false;
 	}
-
 }

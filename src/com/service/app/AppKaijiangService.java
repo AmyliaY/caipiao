@@ -37,7 +37,6 @@ public class AppKaijiangService {
 	 */
 	public String gotoKaijiang() {
 		Map map = new HashMap();
-		
 		DaletouKjgg daletouKjgg = new DaletouKjgg();
 		String hql1 = "from DaletouKjgg order by kaijiangTime desc";
 		List<DaletouKjgg> list1 = hqlDAO.pageQuery(hql1, 1, 1);
@@ -45,7 +44,6 @@ public class AppKaijiangService {
 			daletouKjgg = list1.get(0);
 		}
 		map.put("daletouKjgg", daletouKjgg);
-		
 		Fucai3dKjgg fucai3dKjgg = new Fucai3dKjgg();
 		String hql2 = "from Fucai3dKjgg order by kaijiangTime desc";
 		List<Fucai3dKjgg> list2 = hqlDAO.pageQuery(hql2, 1, 1);
@@ -53,7 +51,6 @@ public class AppKaijiangService {
 			fucai3dKjgg = list2.get(0);
 		}
 		map.put("fucai3dKjgg", fucai3dKjgg);
-		
 		PailiesanKjgg pailiesanKjgg = new PailiesanKjgg();
 		String hql3 = "from PailiesanKjgg order by kaijiangTime desc";
 		List<PailiesanKjgg> list3 = hqlDAO.pageQuery(hql3, 1, 1);
@@ -61,7 +58,6 @@ public class AppKaijiangService {
 			pailiesanKjgg = list3.get(0);
 		}
 		map.put("pailiesanKjgg", pailiesanKjgg);
-		
 		PailiewuKjgg pailiewuKjgg = new PailiewuKjgg();
 		String hql4 = "from PailiewuKjgg order by kaijiangTime desc";
 		List<PailiewuKjgg> list4 = hqlDAO.pageQuery(hql4, 1, 1);
@@ -69,7 +65,6 @@ public class AppKaijiangService {
 			pailiewuKjgg = list4.get(0);
 		}
 		map.put("pailiewuKjgg", pailiewuKjgg);
-		
 		QilecaiKjgg qilecaiKjgg = new QilecaiKjgg();
 		String hql5 = "from QilecaiKjgg order by kaijiangTime desc";
 		List<QilecaiKjgg> list5 = hqlDAO.pageQuery(hql5, 1, 1);
@@ -77,7 +72,6 @@ public class AppKaijiangService {
 			qilecaiKjgg = list5.get(0);
 		}
 		map.put("qilecaiKjgg", qilecaiKjgg);
-		
 		QixingcaiKjgg qixingcaiKjgg = new QixingcaiKjgg();
 		String hql6 = "from QixingcaiKjgg order by kaijiangTime desc";
 		List<QixingcaiKjgg> list6 = hqlDAO.pageQuery(hql6, 1, 1);
@@ -85,7 +79,6 @@ public class AppKaijiangService {
 			qixingcaiKjgg = list6.get(0);
 		}
 		map.put("qixingcaiKjgg", qixingcaiKjgg);
-		
 		ShiyixuanwuKjgg shiyixuanwuKjgg = new ShiyixuanwuKjgg();
 		String hql7 = "from ShiyixuanwuKjgg order by kaijiangTime desc";
 		List<ShiyixuanwuKjgg> list7 = hqlDAO.pageQuery(hql7, 1, 1);
@@ -93,7 +86,6 @@ public class AppKaijiangService {
 			shiyixuanwuKjgg = list7.get(0);
 		}
 		map.put("shiyixuanwuKjgg", shiyixuanwuKjgg);
-		
 		ShuangseqiuKjgg shuangseqiuKjgg = new ShuangseqiuKjgg();
 		String hql8 = "from ShuangseqiuKjgg order by kaijiangTime desc";
 		List<ShuangseqiuKjgg> list8 = hqlDAO.pageQuery(hql8, 1, 1);
@@ -101,7 +93,6 @@ public class AppKaijiangService {
 			shuangseqiuKjgg = list8.get(0);
 		}
 		map.put("shuangseqiuKjgg", shuangseqiuKjgg);
-		
 		ZucaishengfuKjgg zucaishengfuKjgg = new ZucaishengfuKjgg();
 		String hql9 = "from ZucaishengfuKjgg order by kaijiangTime desc";
 		List<ZucaishengfuKjgg> list9 = hqlDAO.pageQuery(hql9, 1, 1);
@@ -109,7 +100,6 @@ public class AppKaijiangService {
 			zucaishengfuKjgg = list9.get(0);
 		}
 		map.put("zucaishengfuKjgg", zucaishengfuKjgg);
-		
 		JsonConfig config = new JsonConfig();
 		JsonFilter.ignoredSet(config);
 		JSONObject jsonObject = new JSONObject();

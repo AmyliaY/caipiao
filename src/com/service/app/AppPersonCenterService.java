@@ -34,6 +34,7 @@ import net.sf.json.JsonConfig;
 */
 @Service
 public class AppPersonCenterService {
+	
 	@Autowired
 	private UsersDAO usersDAO;
 	@Autowired

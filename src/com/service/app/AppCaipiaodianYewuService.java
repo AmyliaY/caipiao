@@ -84,15 +84,8 @@ public class AppCaipiaodianYewuService {
 				  djs = 0;
 			  dingdan.setDjs_miao(djs);
 		}
-		/*List<Dingdanxiangqing> ddxqList = new ArrayList<Dingdanxiangqing>();
-		for (Dingdan dingdan : dingdanList) {
-			String hql2 = "from Dingdanxiangqing where dingdan.id=?";//订单详情
-			List<Dingdanxiangqing> list = hqlDAO.findByHQL(hql2, dingdan.getId());
-			ddxqList.addAll(list);
-		}*/
 		Map map = new HashMap();
 		map.put("dingdanList", dingdanList);
-		//map.put("ddxqList", ddxqList);
 		JsonConfig config = new JsonConfig();
 		config.setExcludes(new String[]{"password"});
 		JsonFilter.ignoredSet(config);
@@ -146,12 +139,6 @@ public class AppCaipiaodianYewuService {
 		//对订单做分页
 		String hql = "from Dingdan where status=2 and caipiaodianByCpzid.id=?";//订单
 		List<Dingdan> dingdanList = hqlDAO.pageQuery(hql, Integer.parseInt(size), Integer.parseInt(page), caipiaodian.getId());
-		/*List<Dingdanxiangqing> ddxqList = new ArrayList<Dingdanxiangqing>();
-		for (Dingdan dingdan : dingdanList) {
-			String hql2 = "from Dingdanxiangqing where dingdan.id=?";//订单详情
-			List<Dingdanxiangqing> list = hqlDAO.findByHQL(hql2, dingdan.getId());
-			ddxqList.addAll(list);
-		}*/
 		Map map = new HashMap();
 		map.put("dingdanList", dingdanList);
 		//map.put("ddxqList", ddxqList);

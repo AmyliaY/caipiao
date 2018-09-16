@@ -51,8 +51,6 @@ public class AppCaipiaodianCenterService {
 	@Autowired
 	private CpztixianDAO cpztixianDAO;
 	
-	
-	
 	/**
 	 * 彩票店登陆
 	 * 彩票站状态，-1未进行商户验证，0未审核，1审核通过，2审核未通过
@@ -87,7 +85,6 @@ public class AppCaipiaodianCenterService {
 				return arrayList;
 			}
 		}
-		
 		return null;
 	}
 	
@@ -114,7 +111,6 @@ public class AppCaipiaodianCenterService {
 		map.put("sumOrder", sumOrder);
 		map.put("turnover", turnover);
 		map.put("id", caipiaodian.getId());
-		
 		JsonConfig config = new JsonConfig();
 		JsonFilter.ignoredSet(config);
 		JSONObject jsonObject = new JSONObject();
@@ -191,18 +187,6 @@ public class AppCaipiaodianCenterService {
 	public void shopConfirmation(Caipiaodianshenqing caipiaodianshenqing, String faren, String shenfenzheng, String sfzFrontImg, 
 			String sfzBackImg, String yingyeID, String yingyeName, String yingyeImg, Integer arId, String address
 			) {
-//		Double jingdu1=null;
-//		Double weidu1 = null;
-//		Boolean isTicai1 = null;
-//		Boolean isFucai1 = null;
-//		if(StringUtil.isNotNull(jingdu)&&jingdu.trim().length()>0)
-//			jingdu1 = Double.parseDouble(jingdu);
-//		if(StringUtil.isNotNull(weidu)&&weidu.trim().length()>0)
-//			weidu1 = Double.parseDouble(weidu);
-//		if(StringUtil.isNotNull(isTicai)&&isTicai.trim().length()>0)
-//			isTicai1 = Boolean.parseBoolean(isTicai);
-//		if(StringUtil.isNotNull(isFucai)&&isFucai.trim().length()>0)
-//			isFucai1 = Boolean.parseBoolean(isFucai);
 		System.out.println(caipiaodianshenqing.getId());
 		caipiaodianshenqing.setZhenshixingming(faren);
 		caipiaodianshenqing.setShenfenzhengbianhao(shenfenzheng);
@@ -221,10 +205,6 @@ public class AppCaipiaodianCenterService {
 		caipiaodianshenqing.setZhuangtai((Integer)0);
 		caipiaodianshenqingDAO.merge(caipiaodianshenqing);
 	}
-
-
-	
-	
 	
 ////////////////////////////////////////////彩票店的信息记录////////////////////////////////////////////////////////////////
 	/**
@@ -329,7 +309,6 @@ public class AppCaipiaodianCenterService {
 		return json;
 	}
 	
-	
 	/**
 	 * 提现操作
 	 * 发起提现申请，新增一条彩票店提现申请记录，等待后台审核
@@ -367,8 +346,4 @@ public class AppCaipiaodianCenterService {
 			caipiaodianDAO.merge(caipiaodian);
 		}
 	}
-
-	
-	
-	
 }

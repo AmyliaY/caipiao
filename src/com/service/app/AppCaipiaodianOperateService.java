@@ -25,9 +25,9 @@ import net.sf.json.JsonConfig;
 /**
 * @author 全恒
 */
-
 @Service
 public class AppCaipiaodianOperateService {
+	
 	@Autowired
 	private HqlDAO hqlDAO;
 	@Autowired
@@ -154,7 +154,6 @@ public class AppCaipiaodianOperateService {
 		style.setRing(true); style.setVibrate(true); style.setClearable(true); // 设置通知是否响铃，震动，或者可清除
 		template.setStyle(style);
 		List list = new ArrayList();
-		
 		//打印完成后，将订单状态改为3（已完成），将积分打到彩票店账户上
 		for (Dingdan dingdan : lanyaDayinList) {
 			dingdan.setStatus((Integer)3);

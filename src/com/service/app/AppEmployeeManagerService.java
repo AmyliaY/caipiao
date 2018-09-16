@@ -23,6 +23,7 @@ import net.sf.json.JsonConfig;
 */
 @Service
 public class AppEmployeeManagerService {
+	
 	@Autowired
 	private CaipiandianyuangongDAO caipiandianyuangongDAO;
 	@Autowired
@@ -113,5 +114,4 @@ public class AppEmployeeManagerService {
 		caipiandianyuangong.setMima(pwd2);
 		return "yes";
 	}
-
 }
