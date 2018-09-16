@@ -14,10 +14,12 @@ import com.pojo.Appversion;
 
 @Service
 public class APPvesionService {
+	
 	@Autowired
 	private HqlDAO hqlDAO;
 	@Autowired
 	private AppversionDAO appversionDAO;
+	
 	public Map applisting(int size, int page) {
 		String hqlsum="select count(*) from Appversion";
 		int sum = (int) hqlDAO.unique(hqlsum);
@@ -34,6 +36,7 @@ public class APPvesionService {
 		map.put("size", size);
 		return map;
 	}
+	
 	public void AppfileUpload(String appEdition, String avtype, String file) {
 		Appversion appversion=new Appversion();
 		appversion.setAversion(appEdition);//Avversion
@@ -45,7 +48,7 @@ public class APPvesionService {
 		appversion.setAvtime(new Timestamp(System.currentTimeMillis()));
 		appversionDAO.save(appversion);
 	}
-	//删除
+	
 	public boolean deleteapp(int avid) {
 		Appversion app=appversionDAO.findById(avid);
 		if(app!=null){
@@ -54,5 +57,4 @@ public class APPvesionService {
 		}
 		return false;
 	}
-
 }
