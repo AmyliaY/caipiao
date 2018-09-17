@@ -24,6 +24,7 @@ import net.sf.json.JsonConfig;
 
 @Service
 public class ChongzhijiluService {
+	
 	@Autowired
 	private UserschongzhijiluDAO userschongzhijiluDAO;
 	@Autowired 
@@ -32,6 +33,7 @@ public class ChongzhijiluService {
 	private DingdanDAO dingdandao;
 	@Autowired
 	private UsersDAO usersDAO;
+	
 	public Map chongzhilisting(int page, int size, String mintime, String maxtime, String id) {
 		if(page<1)
 			page=1;
@@ -69,16 +71,19 @@ public class ChongzhijiluService {
 		map.put("list", list);
 		return map;
 	}
+	
 	public void delete(String c) {
 		// TODO Auto-generated method stub
 		String hql = "delete from Userschongzhijilu where id in ("+c+")";
 		dao.bulkUpdate(hql);
 	}
+	
 	public Userschongzhijilu chongzhijilu_bianji(String id) {
 		// TODO Auto-generated method stub
 		Userschongzhijilu userschongzhijilu = userschongzhijiluDAO.findById(new Integer(id));
 		return userschongzhijilu;
 	}
+	
 	public String getdingdanid() {
 		// TODO Auto-generated method stub
 		List list = dingdandao.findAll();
@@ -87,6 +92,7 @@ public class ChongzhijiluService {
 		String json = JSONArray.fromObject(list,config).toString();
 		return json;
 	}
+	
 	public void bianji(String id ,String time, String phone, String money, String type, String status, String dingdanid) {
 		// TODO Auto-generated method stub
 		Userschongzhijilu userschongzhijilu = new Userschongzhijilu();
