@@ -16,29 +16,28 @@ import com.pojo.ShuangseqiuKjgg;
 
 @Service
 public class CaiPiaoService {
+	
 	@Autowired
 	private HqlDAO hqldao;
 	@Autowired
 	private ShuangseqiuKjggDAO shuangseqiuqishuDAO;
+	
 	public Map getAllkaijiang(String kjQishu, Timestamp mintime, Timestamp maxtime) {
 		StringBuffer sb = new StringBuffer();
 		List listparam = new ArrayList();
 		sb.append(" where 1=1 ");
-
 		if (kjQishu != null && kjQishu.trim().length() > 0) {
 			sb.append("and time like ?");
 			listparam.add("%" + kjQishu + "%");
 		}
 		if (mintime != null) {
 			sb.append("and time>=?");
-			
 			listparam.add(mintime);
 		}
 		if (maxtime != null) {
 			sb.append(" and time<=?");
 			listparam.add(maxtime);
 		}
-
 		String sumHQL = "select count(*) from ShuangseqiuKjgg" + sb.toString();
 		List sumList = hqldao.query(sumHQL, listparam.toArray());
 
@@ -47,7 +46,6 @@ public class CaiPiaoService {
 
 		if (sum < 1)
 			return new HashMap();
-
 		// int count = sum%size==0 ? sum/size : sum/size+1;
 		//
 		// //越界检查
@@ -71,6 +69,7 @@ public class CaiPiaoService {
 		List list = hqldao.query(hql);
 		return list;
 	}
+	
 	public void updateKaiJiang(String blue, String oneRed, String twoRed, String threeRed, String fourRed,
 			String fiveRed, String sixRed, String qishu) {
 		// TODO Auto-generated method stub
@@ -105,5 +104,4 @@ public class CaiPiaoService {
 		// TODO Auto-generated method stub
 		shuangseqiuqishuDAO.merge(shuangseqiuqishu);
 	}
-	
 }

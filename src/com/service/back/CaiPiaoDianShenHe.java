@@ -35,6 +35,7 @@ import com.util.StringUtil;
 
 @Service
 public class CaiPiaoDianShenHe {
+	
 	@Autowired
 	private HqlDAO dao;
 	@Autowired
@@ -53,6 +54,7 @@ public class CaiPiaoDianShenHe {
 	private CaipiaobiaoDAO caipiaobiaoDAO;
 	@Autowired
 	private CaipiaobiaoDescDAO caipiaobiaoDescDAO;
+	
 	public Map shenhelisting(int page, int size) {
 		// TODO Auto-generated method stub
 		String hql1="select count(*) from Caipiaodianshenqing where zhuangtai=0";
@@ -72,6 +74,7 @@ public class CaiPiaoDianShenHe {
 		map.put("pagecount", pagecount);
 		return map;
 	}
+	
 	public void shenheupdate(String zhuangtai, String id) {
 		// TODO Auto-generated method stub
 		System.out.println(zhuangtai);
@@ -99,6 +102,7 @@ public class CaiPiaoDianShenHe {
 			caipiaodian.setIsticai(0);
 		caipiaodiandao.save(caipiaodian);
 	}
+	
 	public Map shenhelistingjvjue(int page, int size) {
 		String hql1="select count(*) from Caipiaodianshenqing where zhuangtai=2";
 		int sum = (int) dao.unique(hql1);
@@ -117,6 +121,7 @@ public class CaiPiaoDianShenHe {
 		map.put("pagecount", pagecount);
 		return map;
 	}
+	
 	public void shenhejvjue(String zhuangtai, String id, String liyou) {
 		// TODO Auto-generated method stub
 		System.out.println(zhuangtai);
@@ -128,6 +133,7 @@ public class CaiPiaoDianShenHe {
 		caipiaodianshenqingDAO.merge(caipiaodianshenqing);
 		
 	}
+	
 	public Map findcaipiaodianlisting(int page, int size) {
 		// TODO Auto-generated method stub
 		String hql1="select count(*) from Caipiaodian where isticai=0 and isfucai=0";
@@ -153,29 +159,34 @@ public class CaiPiaoDianShenHe {
 		map.put("pagecount", pagecount);
 		return map;
 	}
+	
 	public Caipiaodian dianlisting(String id) {
 		// TODO Auto-generated method stub
 		Integer id1 = new Integer(id);
 		Caipiaodian caipiaodian = caipiaodiandao.findById(id1);
 		return caipiaodian;
 	}
+	
 	public List arealisting() {
 		// TODO Auto-generated method stub
 		List list = proviceDAO.findAll();
 		return list;
 	}
+	
 	public List citylisting(String id) {
 		// TODO Auto-generated method stub
 		Integer id1 = new Integer(id);
 		List list =cityDAO.findByProperty("provice.prId", id1);
 		return list;
 	}
+	
 	public List qulisting(String id) {
 		// TODO Auto-generated method stub
 		Integer id1 = new Integer(id);
 		List list = areaDAO.findByProperty("city.ctId", id1);
 		return list;
 	}
+	
 	public void dianlistingupdate(String id, String shoujihao, String password, String stores, String qu,
 			String address, String jingdu, String weidu, String isfucai, String isticai, String tixian, String begintime, String endtime, String time) {
 		// TODO Auto-generated method stub
@@ -207,6 +218,7 @@ public class CaiPiaoDianShenHe {
 		caipiaodian.setTime(Timestamp.valueOf(time));
 		caipiaodiandao.merge(caipiaodian);
 	}
+	
 	public Map caipiaolisting(int page, int size) {
 		// TODO Auto-generated method stub
 		String hql1="select count(*) from Caipiaobiao";
@@ -223,7 +235,6 @@ public class CaiPiaoDianShenHe {
 			for (CaipiaobiaoDesc caipiaobiaoDesc : set) {
 				System.out.println(caipiaobiaoDesc.getName());
 			}
-			
 		}
 		Map map = new HashMap();
 		map.put("page", page);
@@ -232,8 +243,8 @@ public class CaiPiaoDianShenHe {
 		map.put("sum", sum);
 		map.put("pagecount", pagecount);
 		return map;
-		
 	}
+	
 	public Map caipiao_leixinglisting(int page, int size) {
 		// TODO Auto-generated method stub
 		String hql1="select count(*) from CaipiaoLeixing";
@@ -253,6 +264,7 @@ public class CaiPiaoDianShenHe {
 		map.put("pagecount", pagecount);
 		return map;
 	}
+	
 	public void caipiao_leixing_add(String caipiao_leixing, String status) {
 		// TODO Auto-generated method stub
 		System.out.println(status);
@@ -262,12 +274,14 @@ public class CaiPiaoDianShenHe {
 		caipiaoLeixing.setStatus(status1);
 		caipiaoLeixingDAO.save(caipiaoLeixing);
 	}
+	
 	public CaipiaoLeixing caipiaoleixinglistingjson(String id) {
 		// TODO Auto-generated method stub
 		Integer id1 = new Integer(id);
 		CaipiaoLeixing caipiaoleixing = caipiaoLeixingDAO.findById(id1);
 		return caipiaoleixing;
 	}
+	
 	public void addcaipiaolisting(String name, String type, String price, String begintime, String endtime,
 			String status, String kaijiangtime, String jiangchi) {
 		// TODO Auto-generated method stub
@@ -281,6 +295,7 @@ public class CaiPiaoDianShenHe {
 		caipiaobiao.setStatus(status1);
 		caipiaobiaoDAO.save(caipiaobiao);
 	}
+	
 	public void caipiao_leixing_bianji(String id,String caipiao_leixing, String status ) {
 		// TODO Auto-generated method stub
 		Integer id1 = new Integer(id);
@@ -289,17 +304,19 @@ public class CaiPiaoDianShenHe {
 		caipiaoLeixing.setStatus(new Integer(status));
 		caipiaoLeixingDAO.merge(caipiaoLeixing);
 	}
+	
 	public List caipiaobiaofindall() {
 		// TODO Auto-generated method stub
 		List list = caipiaoLeixingDAO.findAll();
-		
 		return list;
 	}
+	
 	public CaipiaobiaoDesc caiopiao_biji_data(String id) {
 		// TODO Auto-generated method stub
 		CaipiaobiaoDesc caipiaobiaoDesc = caipiaobiaoDescDAO.findById(new Integer(id));
 		return caipiaobiaoDesc;
 	}
+	
 	public void caipiao_biji_insert(String id,String name, String type, String type2,String price, String begintime, String endtime,
 			String status, String kaijiangtime, String jiangchi) {
 		// TODO Auto-generated method stub
@@ -329,6 +346,7 @@ public class CaiPiaoDianShenHe {
 //		caipiaobiaoDAO.merge(caipiaobiao);
 		caipiaobiaoDescDAO.merge(caipiaobiaoDescs);
 	}
+	
 	public Map findcaipiaodianlisting1(int page, int size)
 	{
 		String hql1="select count(*) from Caipiaodian where isticai =1";
@@ -354,6 +372,7 @@ public class CaiPiaoDianShenHe {
 		map.put("list1", list1);
 		return map;
 	}
+	
 	public Map findcaipiaodianlisting2(int page, int size) {
 		String hql1="select count(*) from Caipiaodian where isfucai = 1";
 		int sum = (int) dao.unique(hql1);
@@ -378,10 +397,10 @@ public class CaiPiaoDianShenHe {
 		map.put("pagecount", pagecount);
 		return map;
 	}
+	
 	public List caipiaobiaofindall2() {
 		// TODO Auto-generated method stub
 		List list = caipiaobiaoDAO.findAll();
 		return list;
 	}
-
 }
