@@ -23,6 +23,7 @@ import net.sf.json.JsonConfig;
 
 @Service
 public class GoodsorderService {
+	
 	@Autowired
 	private HqlDAO hqldao;
 	@Autowired
@@ -31,6 +32,7 @@ public class GoodsorderService {
 	private CaipiaodianDAO caipiaodianDAO;
 	@Autowired
 	private UsersDAO usersDAO;
+	
 	public Map goodsorderlisting(String id,String mintime,String maxtime,String status) {
 		StringBuffer sb = new StringBuffer();
 		List listparam = new ArrayList();
@@ -79,16 +81,19 @@ public class GoodsorderService {
 		map.put("list", list);
 		return map;
 	}
+	
 	public void delete(String c) {
 		// TODO Auto-generated method stub
 		String hql = "delete from Dingdan where id in ("+c+")";
 		hqldao.bulkUpdate(hql);
 	}
+	
 	public Dingdan getgoodsorderById(String id) {
 		// TODO Auto-generated method stub
 		Dingdan dingdan = dao.findById(id);
 		return dingdan;
 	}
+	
 	public String getjiedancpdid() {
 		// TODO Auto-generated method stub
 		List list = caipiaodianDAO.findAll();
@@ -97,6 +102,7 @@ public class GoodsorderService {
 		String json = JSONArray.fromObject(list,config).toString();
 		return json;
 	}
+	
 	public void bianji(String id, String time, String phone, String money, String begintime, String endtime, String num,
 			String status,
 			String jiedancpd1, String jiedancpd2, String jiedancpd3, String jiedancpd4, String jiedancpd5,
