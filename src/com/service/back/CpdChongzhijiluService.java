@@ -29,6 +29,7 @@ import net.sf.json.JsonConfig;
 
 @Service
 public class CpdChongzhijiluService {
+	
 	@Autowired
 	private CpzchongzhijiluDAO cpzchongzhijiluDAO;
 	@Autowired 
@@ -37,6 +38,7 @@ public class CpdChongzhijiluService {
 	private DingdanDAO dingdandao;
 	@Autowired
 	private CaipiaodianDAO cpdDAO;
+	
 	public Map chongzhilisting(int page, int size, String mintime, String maxtime, String id) {
 		if(page<1)
 			page=1;
@@ -74,16 +76,19 @@ public class CpdChongzhijiluService {
 		map.put("list", list);
 		return map;
 	}
+	
 	public void delete(String c) {
 		// TODO Auto-generated method stub
 		String hql = "delete from Cpzchongzhijilu where id in ("+c+")";
 		dao.bulkUpdate(hql);
 	}
+	
 	public Cpzchongzhijilu chongzhijilu_bianji(String id) {
 		// TODO Auto-generated method stub
 		Cpzchongzhijilu cpzchongzhijilu = cpzchongzhijiluDAO.findById(new Integer(id));
 		return cpzchongzhijilu;
 	}
+	
 	public String getdingdanid() {
 		// TODO Auto-generated method stub
 		List list = dingdandao.findAll();
@@ -92,6 +97,7 @@ public class CpdChongzhijiluService {
 		String json = JSONArray.fromObject(list,config).toString();
 		return json;
 	}
+	
 	public void bianji(String id ,String time, String phone, String money, String type, String status, String dingdanid) {
 		// TODO Auto-generated method stub
 		Cpzchongzhijilu cpzchongzhijilu = new Cpzchongzhijilu();
@@ -105,6 +111,7 @@ public class CpdChongzhijiluService {
 		Dingdan dingdan = dingdandao.findById(dingdanid);
 		cpzchongzhijiluDAO.merge(cpzchongzhijilu);
 	}
+	
 	public String getallcpd() {
 		// TODO Auto-generated method stub
 		List list = cpdDAO.findAll();
@@ -113,5 +120,4 @@ public class CpdChongzhijiluService {
 		String json = JSONArray.fromObject(list,config).toString();
 		return json;
 	}
-	
 }
