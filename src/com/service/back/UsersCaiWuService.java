@@ -27,6 +27,7 @@ import net.sf.json.JsonConfig;
  */
 @Service
 public class UsersCaiWuService {
+	
 	@Autowired
 	private UsersDAO usersDAO;
 	@Autowired
@@ -37,6 +38,7 @@ public class UsersCaiWuService {
 	private DingdanDAO dingdanDAO;
 	@Autowired
 	private CaipiaodianDAO caipiaodianDAO;
+	
 	public Map userscaiwu(int page, int size) {
 		// TODO Auto-generated method stub
 		String hql1 = "select count(*) from Users";
