@@ -154,23 +154,18 @@ public class UsersCaiWuService {
 		Timestamp time2 = null;
 		Integer type2 = null;
 		if (StringUtil.isNotNull(phone) && phone.trim().length() > 0) {
-
 			phone1 = new Integer(phone);
 		}
 		if (StringUtil.isNotNull(id) && id.trim().length() > 0) {
-
 			id1 = new Integer(id);
 		}
 		if (StringUtil.isNotNull(money) && money.trim().length() > 0) {
-
 			money1 = new Double(money);
 		}
 		if (StringUtil.isNotNull(time) && time.trim().length() > 0) {
-
 			time2 = Timestamp.valueOf(time);
 		}
 		if (StringUtil.isNotNull(type) && type.trim().length() > 0) {
-
 			type2 = new Integer(type);
 		}
 		Userschongzhijilu userschongzhijilu = userschongzhijiluDAO.findById(id1);
@@ -217,7 +212,6 @@ public class UsersCaiWuService {
 		dingdan.setNum(Integer.valueOf(num));
 		dingdan.setMoney(Double.valueOf(money));
 		dingdanDAO.merge(dingdan);
-		
 	}
 
 	public Map storescaiwu(int page, int size) {
