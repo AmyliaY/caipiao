@@ -17,12 +17,11 @@ import com.pojo.Users;
 
 @Service
 public class UserService {
+	
 	@Autowired
 	private UsersDAO usersDAO;
-	
 	@Autowired
 	private HqlDAO  dao;
-	
 	
 	public List findByUsername(String name) {
 		List list = usersDAO.findByName(name);
