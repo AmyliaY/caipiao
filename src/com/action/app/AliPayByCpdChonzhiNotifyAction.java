@@ -26,7 +26,6 @@ public class AliPayByCpdChonzhiNotifyAction {
 	
 	@Autowired
 	private AppChongzhiTixianService chongzhiTixianService;
-	
 	@RequestMapping
 	
 	@ResponseBody
@@ -100,4 +99,7 @@ public class AliPayByCpdChonzhiNotifyAction {
 			return "no notify message";
 		}
 	}
+	
+	
+	
 }
