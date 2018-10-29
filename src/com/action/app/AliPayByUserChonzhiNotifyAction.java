@@ -23,6 +23,7 @@ import com.service.app.AppChongzhiTixianService;
 @Controller
 @RequestMapping("/aliPayByUserChonzhiNotify.do")
 public class AliPayByUserChonzhiNotifyAction {
+	
 	@Autowired
 	private AppChongzhiTixianService chongzhiTixianService;
 	

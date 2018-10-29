@@ -28,6 +28,7 @@ public class AppBuyCaipiaoAction {
 	private HttpServletRequest request;
 	@Autowired 
 	private AppBuyCaipiaoService buyCaipiaoService;
+	
 	/**
 	 * 创建双色球订单
 	 * 订单状态，-1已取消订单，0已下单未付款，1已付款，2商家已接单
@@ -478,4 +479,5 @@ public class AppBuyCaipiaoAction {
 		String json = buyCaipiaoService.confirmOrdersByZCSF(userid);
 		return json;
 	}
+	
 }
