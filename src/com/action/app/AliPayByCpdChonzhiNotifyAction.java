@@ -26,8 +26,8 @@ public class AliPayByCpdChonzhiNotifyAction {
 	
 	@Autowired
 	private AppChongzhiTixianService chongzhiTixianService;
-	@RequestMapping
 	
+	@RequestMapping
 	@ResponseBody
 	public String callbakc(HttpServletRequest request) throws UnsupportedEncodingException
 	{
