@@ -99,8 +99,4 @@ public class AliPayByCpdChonzhiNotifyAction {
 			return "no notify message";
 		}
 	}
-	
-	
-	
-	
 }
