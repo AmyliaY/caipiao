@@ -67,12 +67,6 @@ public class AppEmployeeManagerAction {
 	}
 	
 	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
 	 * 编辑员工
 	 */
 	@RequestMapping(params="p=editEmployee")
