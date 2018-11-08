@@ -55,6 +55,8 @@ public class AppEmployeeManagerAction {
 		return json;//json=yes或no，为no则表示该员工的手机号与某一个彩票店的手机号重复,为no2则表示该员工的手机号与另一个员工的手机号重复,
 	}
 	
+	
+	
 	/**
 	 * 修改员工状态：1在职，0离职
 	 */
