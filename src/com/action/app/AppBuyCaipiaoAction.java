@@ -66,9 +66,6 @@ public class AppBuyCaipiaoAction {
 		return json;
 	}
 	
-	
-	
-	
 	/**
 	 * 创建福彩3D订单
 	 * 订单状态，-1已取消订单，0已下单未付款，1已付款，2商家已接单
